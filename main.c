@@ -11,7 +11,7 @@ in : cooler(8)
 #include "clean_room.h"
 
 //ai yolo v5
-static void    child_process(int fd[2], char *argv[], char *envp[])
+static void    child_process(char *argv[], char *envp[])
 {
     char    **command;
 
@@ -21,30 +21,31 @@ static void    child_process(int fd[2], char *argv[], char *envp[])
     execve("/usr/bin/python3", command, envp);
 }
 
-static void     parents_process(int fd[2], char *argv[])
+static void     parents_process(void)
 {
     int     status;
 
     wait(&status);
     printf("%d\n",status);
     if (status == 0)
-        //code;
-    exit (0);
+        printf("code start");
 }
 
 int main(int argc, char *argv[], char *envp[])
 {
     pid_t   child;
-    int     fd[2];
 
     if (argc != 2)
         exit (0);
-    child = fork();  //python3 yolo
-    if (child < 0)
-        exit (1);
-    else if (child == 0) // child
-        child_process(fd, argv, envp);
-    else  //parents
-        parents_process(fd, argv);
+    while (1)
+    {
+        child = fork();  //python3 yolo
+        if (child < 0)
+            exit (1);
+        else if (child == 0) // child
+            child_process(argv, envp);
+        else  //parents
+            parents_process();
+    }
     exit (0);
 }
