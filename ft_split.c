@@ -1,4 +1,4 @@
-#include "../clean_room.h"
+#include "clean_room.h"
 
 static size_t	row_size(char *str, char c)
 {

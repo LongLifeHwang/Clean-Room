@@ -15,7 +15,7 @@ static void    child_process(int fd[2], char *argv[], char *envp[])
 {
     char    **command;
 
-    command = ft_split(argv[1]);
+    command = ft_split(argv[1], ' ');
     if (command == NULL)
         exit (1);
     execve("/usr/bin/python3", command, envp);
@@ -26,9 +26,10 @@ static void     parents_process(int fd[2], char *argv[])
     int     status;
 
     wait(&status);
+    printf("%d\n",status);
     if (status == 0)
         //code;
-    exit (1);
+    exit (0);
 }
 
 int main(int argc, char *argv[], char *envp[])
@@ -44,6 +45,6 @@ int main(int argc, char *argv[], char *envp[])
     else if (child == 0) // child
         child_process(fd, argv, envp);
     else  //parents
-        parents_process(fd, argv, envp);
+        parents_process(fd, argv);
     exit (0);
 }

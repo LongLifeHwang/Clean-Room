@@ -5,6 +5,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdlib.h>
+# include <sys/wait.h>
 
 char	**ft_split(char *str, char c);
 
