@@ -29,6 +29,11 @@ static void     parents_process(void)
     printf("%d\n",status);
     if (status == 0)
         printf("code start");
+    else
+    {
+        printf("error\n");
+        exit(1);
+    }
 }
 
 int main(int argc, char *argv[], char *envp[])
@@ -36,12 +41,20 @@ int main(int argc, char *argv[], char *envp[])
     pid_t   child;
 
     if (argc != 2)
-        exit (0);
+        exit(0);
+    if (wiringPiSetup() == -1)
+    {
+        printf("GPIO error\n");
+        exit(1);
+    }
     while (1)
     {
         child = fork();  //python3 yolo
         if (child < 0)
-            exit (1);
+        {
+            printf("fork error\n");
+            exit(1);
+        }
         else if (child == 0) // child
             child_process(argv, envp);
         else  //parents
