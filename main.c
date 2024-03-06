@@ -28,12 +28,42 @@ static void     parents_process(void)
     wait(&status);
     printf("%d\n",status);
     if (status == 0)
-        printf("code start");
+        iot_main();
     else
     {
         printf("error\n");
         exit(1);
     }
+}
+
+static void init(void)
+{
+    if (wiringPiSetup() == -1)
+    {
+        printf("GPIO error\n");
+        exit(1);
+    }
+    pinMode(CLEANPEN1, OUTPUT);
+    pinMode(CLEANPEN2, OUTPUT);
+    pinMode(PENDO1, OUTPUT);
+    pinMode(PENDO2, OUTPUT);
+    pinMode(PENDO3, OUTPUT);
+    pinMode(PENDO4, OUTPUT);
+    pinMode(PENDO5, OUTPUT);
+    pinMode(PENDO6, OUTPUT);
+    pinMode(PENDO7, OUTPUT);
+    pinMode(PENDO8, OUTPUT);
+    pinMode(PENDO9, OUTPUT);
+    pinMode(PENDO10, OUTPUT);
+    pinMode(SERVO1, OUTPUT);
+    pinMode(SERVO2, OUTPUT);
+    pinMode(SERVO3, OUTPUT);
+    pinMode(SERVO4, OUTPUT);
+    pinMode(LED, OUTPUT);
+    softPwmCreate(SERVO1, 0, 200);
+    softPwmCreate(SERVO2, 0, 200);
+    softPwmCreate(SERVO3, 0, 200);
+    softPwmCreate(SERVO4, 0, 200);
 }
 
 int main(int argc, char *argv[], char *envp[])
@@ -42,11 +72,8 @@ int main(int argc, char *argv[], char *envp[])
 
     if (argc != 2)
         exit(0);
-    if (wiringPiSetup() == -1)
-    {
-        printf("GPIO error\n");
-        exit(1);
-    }
+    init();
+    pen_move(2);
     while (1)
     {
         child = fork();  //python3 yolo

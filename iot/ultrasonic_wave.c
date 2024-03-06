@@ -1,7 +1,5 @@
 #include "../clean_room.h"
 
-# define FLAG 10
-
 void    ultrasonic_wave(int tringpin, int echopin)
 {
     int     distance;
