@@ -1,6 +1,12 @@
 //Programing
 //python, c
 
+//install
+/*
+sudo apt-get install wringpi
+compile : -lwiringpi
+*/
+
 //sensor position
 /*
 front : camera(yolo v5)

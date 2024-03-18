@@ -1,5 +1,0 @@
-data/train/Screenshot from 2024-03-04 12-55-15.png
-data/train/Screenshot from 2024-03-04 12-55-46.png
-data/train/Screenshot from 2024-03-04 12-56-21.png
-data/train/Screenshot from 2024-03-04 12-57-04.png
-data/train/Screenshot from 2024-03-04 12-57-57.png

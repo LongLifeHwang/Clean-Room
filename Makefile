@@ -1,5 +1,5 @@
 CC = cc
-FLAG = -Wall -Wextra -Werror
+FLAG = -Wall -Wextra -Werror -lwiringpi
 NAME = clean_room
 SOURCE = ./main.c \
 		./iot/iot_main.c \

@@ -1,2 +1,0 @@
-data/test/Screenshot from 2024-03-04 12-53-43.png
-data/test/Screenshot from 2024-03-04 12-54-38.png
