@@ -11,8 +11,25 @@
 # include <wiringPi.h>
 # include <softPwm.h>
 
-# define CLEANPEN1 1
-# define CLEANPEN2 1
+//https://m.blog.naver.com/kimmy5000/220461603097
+//송풍기
+# define MotorRight 1
+# define MotorLeft 1
+
+//https://fishpoint.tistory.com/7140#google_vignette
+// 입구 초음파
+# define InTrig 1
+# define InEcho 1
+// 출구 초음파
+# define OutTrig 1
+# define OutEcho 1
+
+//https://blog.naver.com/simjk98/222149165719
+//입구 잠금 장치
+# define InServo 1
+//출구 잠금 장치
+# define OutServo 1
+
 # define PENDO1 1
 # define PENDO2 1
 # define PENDO3 1

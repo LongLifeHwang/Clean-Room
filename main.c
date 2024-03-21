@@ -49,27 +49,23 @@ static void init(void)
         printf("GPIO error\n");
         exit(1);
     }
-    pinMode(CLEANPEN1, OUTPUT);
-    pinMode(CLEANPEN2, OUTPUT);
-    pinMode(PENDO1, OUTPUT);
-    pinMode(PENDO2, OUTPUT);
-    pinMode(PENDO3, OUTPUT);
-    pinMode(PENDO4, OUTPUT);
-    pinMode(PENDO5, OUTPUT);
-    pinMode(PENDO6, OUTPUT);
-    pinMode(PENDO7, OUTPUT);
-    pinMode(PENDO8, OUTPUT);
-    pinMode(PENDO9, OUTPUT);
-    pinMode(PENDO10, OUTPUT);
-    pinMode(SERVO1, OUTPUT);
-    pinMode(SERVO2, OUTPUT);
-    pinMode(SERVO3, OUTPUT);
-    pinMode(SERVO4, OUTPUT);
-    pinMode(LED, OUTPUT);
-    softPwmCreate(SERVO1, 0, 200);
-    softPwmCreate(SERVO2, 0, 200);
-    softPwmCreate(SERVO3, 0, 200);
-    softPwmCreate(SERVO4, 0, 200);
+    //송풍기
+    pinMode(MotorRight, OUTPUT);
+    pinMode(MotorLeft, OUTPUT);
+    //입구 초음파
+    pinMode(InTrig, PWM_OUTPUT);
+    pinMode(InEcho, INPUT);
+    //출구 초음파
+    pinMode(OutTrig, PWM_OUTPUT);
+    pinMode(OutEcho, INPUT);
+    //입구 잠금 장치
+    pinMode(InServo, PWM_OUTPUT);
+    //출구 잠금 장치
+    pinMode(OutServo, PWM_OUTPUT);
+    // softPwmCreate(SERVO1, 0, 200);
+    // softPwmCreate(SERVO2, 0, 200);
+    // softPwmCreate(SERVO3, 0, 200);
+    // softPwmCreate(SERVO4, 0, 200);
 }
 
 int main(int argc, char *argv[], char *envp[])
