@@ -48,8 +48,4 @@ void    cleaning(int flag);
 //iot_main.c
 void    iot_main(void);
 
-void    ultrasonic_wave(int tringpin, int echopin);
-void    door_move(char flag);
-void    pen_move(int flag);
-
 #endif
