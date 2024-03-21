@@ -1,27 +1,25 @@
 #include "../clean_room.h"
 
-void    ultrasonic_wave(int tring, int echo)
+void    ultrasonic_wave(int trig, int echo)
 {
-    int     distance;
-    int     pulse;
+    long    distance;
     long    start;
     long    travel;
-    int     flag;
 
     while (1)
     {
-        digitalWrite(tring, LOW);
+        digitalWrite(trig, LOW);
         usleep(2);
-        digitalWrite(tring, HIGH);
+        digitalWrite(trig, HIGH);
         usleep(20);
-        digitalWrite(tringpin, LOW);
-        while (dightalRead(echopin) == LOW);
+        digitalWrite(trig, LOW);
+        while (dightalRead(echo) == LOW);
         start = micros();
-        while (dightalRead(echopin) == HIGH);
+        while (dightalRead(echo) == HIGH);
         travel = micros() - start;
         distance = travel / 58;
         // printf("distance : %dcm \n", distance);
-        if (distance < 2) //길목 크기 
+        if (distance < 5) //길목 크기 
             return ;
     }
 }

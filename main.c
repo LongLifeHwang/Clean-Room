@@ -57,8 +57,8 @@ static void init(void)
     // pinMode(InEcho, INPUT);
     pinMode(InDoor, INPUT);
     //출구 초음파
-    // pinMode(OutTrig, PWM_OUTPUT);
-    // pinMode(OutEcho, INPUT);
+    pinMode(OutTrig, PWM_OUTPUT);
+    pinMode(OutEcho, INPUT);
     pinMode(OutDoor, INPUT);
     //입구 잠금 장치
     // pinMode(InServo, PWM_OUTPUT);

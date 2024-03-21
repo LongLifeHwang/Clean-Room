@@ -21,12 +21,12 @@
 
 //https://fishpoint.tistory.com/7140#google_vignette
 // 입구 초음파
-// # define InTrig 1
-// # define InEcho 1
+# define InTrig 1
+# define InEcho 1
 # define InDoor 1
 // 출구 초음파
-// # define OutTrig 1
-// # define OutEcho 1
+# define OutTrig 1
+# define OutEcho 1
 # define OutDoor 1
 
 //https://blog.naver.com/simjk98/222149165719
