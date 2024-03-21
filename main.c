@@ -53,19 +53,19 @@ static void init(void)
     pinMode(MotorRight, OUTPUT);
     pinMode(MotorLeft, OUTPUT);
     //입구 초음파
-    // pinMode(InTrig, PWM_OUTPUT);
-    // pinMode(InEcho, INPUT);
+    pinMode(InTrig, PWM_OUTPUT);
+    pinMode(InEcho, INPUT);
     pinMode(InDoor, INPUT);
     //출구 초음파
     pinMode(OutTrig, PWM_OUTPUT);
     pinMode(OutEcho, INPUT);
     pinMode(OutDoor, INPUT);
     //입구 잠금 장치
-    // pinMode(InServo, PWM_OUTPUT);
+    pinMode(InServo, PWM_OUTPUT);
     softPwmCreate(InServo, 0, 200);
     softPwmWrite(InServo, 5); //-90
     //출구 잠금 장치
-    // pinMode(OutServo, PWM_OUTPUT);
+    pinMode(OutServo, PWM_OUTPUT);
     softPwmCreate(OutServo, 0, 200);
     softPwmWrite(OutServo, 5); //-90
     //먼지

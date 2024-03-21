@@ -7,6 +7,7 @@ static void door_move(char flag)
     {
         softPwmWrite(InServo, 24); //90 open
         while (digitalRead(InDoor) == LOW);
+        delay(100);
         while (digitalRead(InDoor) == HIGH);
         softPwmWrite(InServo, 5); //-90 close
     }
@@ -14,6 +15,7 @@ static void door_move(char flag)
     {
         softPwmWrite(OutServo, 24); //90 open
         while (digitalRead(OutDoor) == LOW);
+        delay(100);
         while (digitalRead(OutDoor) == HIGH);
         softPwmWrite(OutServo, 5); //-90 open
     }
@@ -62,7 +64,7 @@ void    iot_main(void)
     ultrasonic_wave(InTrig, InEcho);
     cleaning(5000);
     door_move('O');
-    delay(2000); //초음파 센서 기다리기
+    dust_check(); //먼지 확인
     ultrasonic_wave(OutTrig, OutEcho);
     door_move('O');
     ultrasonic_wave(InTrig, InEcho);

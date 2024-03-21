@@ -8,6 +8,7 @@ void    cleaning(int flag)
     digitalWrite(MotorRight, LOW);
 }
 
+//https://m.blog.naver.com/simjk98/222133748955
 void    dust_check(void)
 {
     unsigned int    pre;
