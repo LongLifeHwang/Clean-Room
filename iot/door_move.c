@@ -2,18 +2,20 @@
 
 //https://blog.naver.com/simjk98/222149165719
 
-void    door_move(int servor1, int servo2, char c)
+void    door_move(char flag)
 {
-    if (c == 'O')
+    if (c == 'I')
     {
-        softPwmWrite(servo1, 10);
-        softPwmWrite(servo2, 10);
-        printf("%d open\n", flag);
+        softPwmWrite(InServo, 24); //90 open
+        while (digitalRead(InDoor) == LOW);
+        while (digitalRead(InDoor) == HIGH);
+        softPwmWrite(InServo, 5); //-90 close
     }
-    else if (C == 'C')
+    else if (C == 'O')
     {
-        softPwmWrite(servo1, 30);
-        softPwmWrite(servo2, 30);
-        printf("%d close\n", flag);
+        softPwmWrite(OutServo, 24); //90 open
+        while (digitalRead(OutDoor) == LOW);
+        while (digitalRead(OutDoor) == HIGH);
+        softPwmWrite(OutServo, 5); //-90 open
     }
 }

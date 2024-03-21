@@ -37,7 +37,7 @@ static void     parents_process(void)
         iot_main();
     else
     {
-        printf("error\n");
+        printf("yolo error\n");
         exit(1);
     }
 }
@@ -53,15 +53,23 @@ static void init(void)
     pinMode(MotorRight, OUTPUT);
     pinMode(MotorLeft, OUTPUT);
     //입구 초음파
-    pinMode(InTrig, PWM_OUTPUT);
-    pinMode(InEcho, INPUT);
+    // pinMode(InTrig, PWM_OUTPUT);
+    // pinMode(InEcho, INPUT);
+    pinMode(InDoor, INPUT);
     //출구 초음파
-    pinMode(OutTrig, PWM_OUTPUT);
-    pinMode(OutEcho, INPUT);
+    // pinMode(OutTrig, PWM_OUTPUT);
+    // pinMode(OutEcho, INPUT);
+    pinMode(OutDoor, INPUT);
     //입구 잠금 장치
-    pinMode(InServo, PWM_OUTPUT);
+    // pinMode(InServo, PWM_OUTPUT);
+    softPwmCreate(InServo, 0, 200);
+    softPwmWrite(InServo, 5); //-90
     //출구 잠금 장치
-    pinMode(OutServo, PWM_OUTPUT);
+    // pinMode(OutServo, PWM_OUTPUT);
+    softPwmCreate(OutServo, 0, 200);
+    softPwmWrite(OutServo, 5); //-90
+    //먼지
+    pinMode(Dust, INPUT);
     // softPwmCreate(SERVO1, 0, 200);
     // softPwmCreate(SERVO2, 0, 200);
     // softPwmCreate(SERVO3, 0, 200);
@@ -75,9 +83,9 @@ int main(int argc, char *argv[], char *envp[])
     if (argc != 2)
         exit(0);
     init();
-    pen_move(2);
     while (1)
     {
+        dust_check();
         child = fork();  //python3 yolo
         if (child < 0)
         {

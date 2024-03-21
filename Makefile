@@ -2,8 +2,9 @@ CC = cc
 FLAG = -Wall -Wextra -Werror -lwiringpi
 NAME = clean_room
 SOURCE = ./main.c \
+		./iot/door_move.c \
+		./iot/dust_check.c \
 		./iot/iot_main.c \
-		./iot/ultrasonic_wave.c \
 		./utils/ft_split.c 
 INC = ./clean_room.h
 OBJS = $(SOURCE:.c=.o)
