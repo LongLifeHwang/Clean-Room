@@ -1,5 +1,48 @@
 #include "../clean_room.h"
 
+//https://blog.naver.com/simjk98/222149165719
+static void door_move(char flag)
+{
+    if (c == 'I')
+    {
+        softPwmWrite(InServo, 24); //90 open
+        while (digitalRead(InDoor) == LOW);
+        while (digitalRead(InDoor) == HIGH);
+        softPwmWrite(InServo, 5); //-90 close
+    }
+    else if (C == 'O')
+    {
+        softPwmWrite(OutServo, 24); //90 open
+        while (digitalRead(OutDoor) == LOW);
+        while (digitalRead(OutDoor) == HIGH);
+        softPwmWrite(OutServo, 5); //-90 open
+    }
+}
+
+static void ultrasonic_wave(int trig, int echo)
+{
+    long    distance;
+    long    start;
+    long    travel;
+
+    while (1)
+    {
+        digitalWrite(trig, LOW);
+        usleep(2);
+        digitalWrite(trig, HIGH);
+        usleep(20);
+        digitalWrite(trig, LOW);
+        while (dightalRead(echo) == LOW);
+        start = micros();
+        while (dightalRead(echo) == HIGH);
+        travel = micros() - start;
+        distance = travel / 58;
+        // printf("distance : %dcm \n", distance);
+        if (distance < 5) //길목 크기 
+            return ;
+    }
+}
+
 void    iot_main(void)
 {
     /*
