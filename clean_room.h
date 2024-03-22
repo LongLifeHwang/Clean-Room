@@ -41,6 +41,7 @@
 
 //블루투스 5v
 //https://www.youtube.com/watch?v=D01Apli9qq4&list=PLiqbe2cCqMjUbO_VVxyEHPS55X-gflan8&index=8
+//https://chat.openai.com/share/66a11e17-5bcc-4528-9ad2-018081583d22
 # define BlueTxd 15
 # define BlueRxd 16
 
