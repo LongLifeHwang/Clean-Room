@@ -39,6 +39,11 @@
 //먼지
 # define Dust 23
 
+//블루투스 5v
+# define BlueTxd 24
+# define BlueRxd 25
+
+
 //ft_split.c
 char	**ft_split(char *str, char c);
 

@@ -70,10 +70,7 @@ static void init(void)
     softPwmWrite(OutServo, 5); //-90
     //먼지
     pinMode(Dust, INPUT);
-    // softPwmCreate(SERVO1, 0, 200);
-    // softPwmCreate(SERVO2, 0, 200);
-    // softPwmCreate(SERVO3, 0, 200);
-    // softPwmCreate(SERVO4, 0, 200);
+    //블루투스
 }
 
 int main(int argc, char *argv[], char *envp[])
