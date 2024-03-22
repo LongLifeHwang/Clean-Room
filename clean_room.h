@@ -40,8 +40,9 @@
 # define Dust 23
 
 //블루투스 5v
-# define BlueTxd 24
-# define BlueRxd 25
+//https://www.youtube.com/watch?v=D01Apli9qq4&list=PLiqbe2cCqMjUbO_VVxyEHPS55X-gflan8&index=8
+# define BlueTxd 15
+# define BlueRxd 16
 
 
 //ft_split.c
