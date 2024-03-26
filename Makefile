@@ -10,7 +10,7 @@ OBJS = $(SOURCE:.c=.o)
 all : $(NAME)
 
 %.o : %.c $(INC)
-	$(CC) $(FLAG) -lwiringpi -c $< -o $@ -I ./
+	$(CC) $(FLAG) -lwiringpi -lwiringPiDev -c $< -o $@ -I ./
 
 $(NAME): $(OBJS)
 	$(CC) $(FLAG) $(OBJS) -o $(NAME)
