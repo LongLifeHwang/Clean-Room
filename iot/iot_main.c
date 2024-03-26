@@ -36,7 +36,7 @@ static void ultrasonic_wave(int trig, int echo)
         digitalWrite(trig, LOW);
         while (digitalRead(echo) == LOW);
         start = micros();
-        while (dightalRead(echo) == HIGH);
+        while (digitalRead(echo) == HIGH);
         travel = micros() - start;
         distance = travel / 58;
         // printf("distance : %dcm \n", distance);
