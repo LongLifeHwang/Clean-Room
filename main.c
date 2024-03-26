@@ -14,7 +14,7 @@ back : ultrasonic wave
 in : cooler(8)
 */
 
-#include "clean_room.h"
+#include "./clean_room.h"
 
 //ai yolo v5
 static void    child_process(char *argv[], char *envp[])
