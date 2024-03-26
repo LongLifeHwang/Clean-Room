@@ -1,5 +1,5 @@
 CC = cc
-FLAG = -Wall -Wextra -Werror -lwiringpi
+FLAG = -Wall -Wextra -Werror
 NAME = clean_room
 SOURCE = ./main.c \
 		./iot/dust_check.c \
@@ -10,7 +10,7 @@ OBJS = $(SOURCE:.c=.o)
 all : $(NAME)
 
 %.o : %.c $(INC)
-	$(CC) $(FLAG) -c $< -o $@ -I ./
+	$(CC) $(FLAG) -lwiringpi -c $< -o $@ -I ./
 
 $(NAME): $(OBJS)
 	$(CC) $(FLAG) $(OBJS) -o $(NAME)
