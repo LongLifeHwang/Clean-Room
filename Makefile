@@ -1,4 +1,4 @@
-CC = cc
+CC = gcc
 FLAG = -Wall -Wextra -Werror
 NAME = clean_room
 SOURCE = ./main.c \
@@ -6,14 +6,10 @@ SOURCE = ./main.c \
 		./iot/iot_main.c \
 		./utils/ft_split.c 
 INC = ./clean_room.h
-OBJS = $(SOURCE:.c=.o)
 all : $(NAME)
 
-%.o : %.c $(INC)
-	$(CC) $(FLAG) -lwiringpi -lwiringPiDev -c $< -o $@ -I ./
-
-$(NAME): $(OBJS)
-	$(CC) $(FLAG) $(OBJS) -o $(NAME)
+$(NAME): $(SOURCE)
+	$(CC) -o $(NAME) $(FLAG) $(SOURCE) -lwiringPi
 
 .PHONY : clean fclean re all
 clean : 
