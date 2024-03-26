@@ -16,7 +16,7 @@ void    dust_check(void)
     int             count;
     int             flag;
 
-    cleaning();
+    cleaning(5000);
     pre = millis();
     count = 0;
     flag = 5000;
