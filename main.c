@@ -3,7 +3,7 @@
 
 //install
 /*
-sudo apt-get install wringpi 
+sudo apt-get install wringpi
 compile : -lwiringpi
 */
 
