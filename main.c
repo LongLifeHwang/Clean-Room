@@ -44,7 +44,7 @@ static void     parents_process(void)
 
 static void init(void)
 {
-    if (wiringPiSetup() == -1)
+    if (wiringPiSetupGpio() == -1)
     {
         printf("GPIO error\n");
         exit(1);
