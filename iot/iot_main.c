@@ -3,7 +3,7 @@
 //https://blog.naver.com/simjk98/222149165719
 static void door_move(char flag)
 {
-    if (c == 'I')
+    if (flag == 'I')
     {
         softPwmWrite(InServo, 24); //90 open
         while (digitalRead(InDoor) == LOW);
@@ -11,7 +11,7 @@ static void door_move(char flag)
         while (digitalRead(InDoor) == HIGH);
         softPwmWrite(InServo, 5); //-90 close
     }
-    else if (C == 'O')
+    else if (flag == 'O')
     {
         softPwmWrite(OutServo, 24); //90 open
         while (digitalRead(OutDoor) == LOW);
