@@ -13,8 +13,8 @@ void    dust_check(void)
 {
     unsigned int    pre;
     unsigned int    cur;
+    unsigned long   flag;
     int             count;
-    int             flag;
 
     cleaning(5000);
     pre = millis();
