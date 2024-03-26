@@ -34,7 +34,7 @@ static void ultrasonic_wave(int trig, int echo)
         digitalWrite(trig, HIGH);
         usleep(20);
         digitalWrite(trig, LOW);
-        while (dightalRead(echo) == LOW);
+        while (digitalRead(echo) == LOW);
         start = micros();
         while (dightalRead(echo) == HIGH);
         travel = micros() - start;
