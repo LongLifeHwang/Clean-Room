@@ -2,7 +2,7 @@
 #include <wiringPi.h>
 #include <softPwm.h>
 
-# define InServo 18
+# define InServo 1
 
 int main(void)
 {
