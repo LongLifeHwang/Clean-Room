@@ -76,6 +76,7 @@ static void init(void)
         delay(500);
         softPwmWrite(InServo, 20); //-90
         delay(500);
+        printf("servo\n");
     }
     //출구 잠금 장치
     pinMode(OutRemit, INPUT);
