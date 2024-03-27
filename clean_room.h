@@ -37,10 +37,10 @@
 //https://blog.naver.com/simjk98/222149165719
 //입구 잠금 장치
 # define InServo 18
-# define InRemit 25
+# define InRemit 19
 //출구 잠금 장치
 # define OutServo 18 //23
-# define OutRemit 22
+# define OutRemit 26
 
 //https://m.blog.naver.com/simjk98/222133748955
 //먼지
