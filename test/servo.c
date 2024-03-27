@@ -1,11 +1,11 @@
 # include <wiringPi.h>
 # include <softPwm.h>
 
-# define InServo 1
+# define InServo 18
 
 int main(void)
 {
-    wiringPiSetupGpio();
+    wiringPiSetup();
     softPwmCreate(InServo, 0, 200);
     while (1)
     {
@@ -15,5 +15,6 @@ int main(void)
         delay(500);
         softPwmWrite(InServo, 20);
         delay(500);
+        printf("servo\n");
     }
 }
