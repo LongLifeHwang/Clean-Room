@@ -16,24 +16,31 @@
 
 //https://m.blog.naver.com/kimmy5000/220461603097
 //송풍기
-# define MotorRight 4
-# define MotorLeft 5
+# define Motor1Right 26
+# define Motor1Left 27
+# define Motor2Right 28
+# define Motor2Left 29
 
 //https://fishpoint.tistory.com/7140#google_vignette
 // 입구 초음파
-# define InTrig 27
-# define InEcho 28
-# define InDoor 29
+// # define InTrig 27
+// # define InEcho 28
+// # define InDoor 29
 // 출구 초음파
-# define OutTrig 0 
-# define OutEcho 2
-# define OutDoor 3
+// # define OutTrig 0 
+// # define OutEcho 2
+// # define OutDoor 3
+
+//입구 인체 감지 센서
+# define InPerson 21
 
 //https://blog.naver.com/simjk98/222149165719
 //입구 잠금 장치
-# define InServo 21
+# define InServo 18
+# define InRemit 25
 //출구 잠금 장치
-# define OutServo 22
+# define OutServo 18 //23
+# define OutRemit 22
 
 //https://m.blog.naver.com/simjk98/222133748955
 //먼지

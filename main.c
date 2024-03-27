@@ -50,24 +50,30 @@ static void init(void)
         exit(1);
     }
     //송풍기
-    pinMode(MotorRight, OUTPUT);
-    pinMode(MotorLeft, OUTPUT);
+    pinMode(Motor1Right, OUTPUT);
+    pinMode(Motor1Left, OUTPUT);
+    pinMode(Motor2Right, OUTPUT);
+    pinMode(Motor2Left, OUTPUT);
     //입구 초음파
-    pinMode(InTrig, PWM_OUTPUT);
-    pinMode(InEcho, INPUT);
-    pinMode(InDoor, INPUT);
+    // pinMode(InTrig, PWM_OUTPUT);
+    // pinMode(InEcho, INPUT);
+    // pinMode(InDoor, INPUT);
+    //입구 인체감지 센서
+
     //출구 초음파
-    pinMode(OutTrig, PWM_OUTPUT);
-    pinMode(OutEcho, INPUT);
-    pinMode(OutDoor, INPUT);
+    // pinMode(OutTrig, PWM_OUTPUT);
+    // pinMode(OutEcho, INPUT);
+    // pinMode(OutDoor, INPUT);
     //입구 잠금 장치
     pinMode(InServo, PWM_OUTPUT);
     softPwmCreate(InServo, 0, 200);
     softPwmWrite(InServo, 5); //-90
     //출구 잠금 장치
-    pinMode(OutServo, PWM_OUTPUT);
-    softPwmCreate(OutServo, 0, 200);
-    softPwmWrite(OutServo, 5); //-90
+    // pinMode(OutServo, PWM_OUTPUT);
+    // softPwmCreate(OutServo, 0, 200);
+    // softPwmWrite(OutServo, 5); //-90
+    //인체 감지 센서
+    pinMode(InPerson, INPUT);
     //먼지
     pinMode(Dust, INPUT);
     //블루투스
