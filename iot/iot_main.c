@@ -6,8 +6,8 @@ static void door_move(char flag)
     if (flag == 'I')
     {
         softPwmWrite(InServo, 24); //90 open
-        printf("here1\n");
         while (digitalRead(InRemit) == LOW);
+        printf("here1\n");
         delay(100);
         while (digitalRead(InRemit) == HIGH);
         softPwmWrite(InServo, 5); //-90 close
