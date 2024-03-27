@@ -65,17 +65,19 @@ static void init(void)
     // pinMode(OutEcho, INPUT);
     // pinMode(OutDoor, INPUT);
     //입구 잠금 장치
+    pinMode(InRemit, INPUT);
     pinMode(InServo, PWM_OUTPUT);
     softPwmCreate(InServo, 0, 200);
     softPwmWrite(InServo, 5); //-90
     //출구 잠금 장치
+    pinMode(OutRemit, INPUT);
     // pinMode(OutServo, PWM_OUTPUT);
     // softPwmCreate(OutServo, 0, 200);
     // softPwmWrite(OutServo, 5); //-90
     //인체 감지 센서
     pinMode(InPerson, INPUT);
     //먼지
-    pinMode(Dust, INPUT);
+    // pinMode(Dust, INPUT);
     //블루투스
 }
 
@@ -88,7 +90,7 @@ int main(int argc, char *argv[], char *envp[])
     init();
     while (1)
     {
-        dust_check();
+        // dust_check();
         child = fork();  //python3 yolo
         if (child < 0)
         {
