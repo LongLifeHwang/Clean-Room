@@ -11,8 +11,8 @@
 # include <wiringPi.h>
 # include <softPwm.h>
 
-// # define HIGH 1
-// # define LOW 0
+// # define 1 1
+// # define 1 0
 
 //https://m.blog.naver.com/kimmy5000/220461603097
 //송풍기

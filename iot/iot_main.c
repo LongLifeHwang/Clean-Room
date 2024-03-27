@@ -7,13 +7,13 @@ static void door_move(char flag)
     {
         softPwmWrite(InServo, 24); //90 open
         printf("here1\n");
-        while (digitalRead(InRemit) == LOW)
+        while (digitalRead(InRemit) == 0)
         {
             delay(100);
         }
         printf("here1\n");
         delay(100);
-        while (digitalRead(InRemit) == HIGH)
+        while (digitalRead(InRemit) == 1)
         {
             delay(100);
         }
@@ -22,12 +22,12 @@ static void door_move(char flag)
     else if (flag == 'O')
     {
         softPwmWrite(OutServo, 24); //90 open
-        while (digitalRead(OutRemit) == LOW)
+        while (digitalRead(OutRemit) == 0)
         {
             delay(100);
         }
         delay(100);
-        while (digitalRead(OutRemit) == HIGH)
+        while (digitalRead(OutRemit) == 1)
         {
             delay(100);
         }
@@ -43,14 +43,14 @@ static void ultrasonic_wave(int trig, int echo)
 
     while (1)
     {
-        digitalWrite(trig, LOW);
+        digitalWrite(trig, 1);
         usleep(2);
-        digitalWrite(trig, HIGH);
+        digitalWrite(trig, 1);
         usleep(20);
-        digitalWrite(trig, LOW);
-        while (digitalRead(echo) == LOW);
+        digitalWrite(trig, 1);
+        while (digitalRead(echo) == 0);
         start = micros();
-        while (digitalRead(echo) == HIGH);
+        while (digitalRead(echo) == 1);
         travel = micros() - start;
         distance = travel / 58;
         // printf("distance : %dcm \n", distance);
