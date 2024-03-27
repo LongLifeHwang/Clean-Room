@@ -88,6 +88,7 @@ int main(int argc, char *argv[], char *envp[])
     if (argc != 2)
         exit(0);
     init();
+    printf("here\n");
     while (1)
     {
         // dust_check();
