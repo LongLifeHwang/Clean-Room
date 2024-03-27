@@ -68,7 +68,7 @@ static void init(void)
     pinMode(InRemit, INPUT);
     pinMode(InServo, OUTPUT);
     softPwmCreate(InServo, 0, 200);
-    softPwmWrite(InServo, 20);
+    softPwmWrite(InServo, 5);
     //출구 잠금 장치
     pinMode(OutRemit, INPUT);
     // pinMode(OutServo, PWM_OUTPUT);
@@ -88,7 +88,6 @@ int main(int argc, char *argv[], char *envp[])
     if (argc != 2)
         exit(0);
     init();
-    printf("here\n");
     while (1)
     {
         // dust_check();
