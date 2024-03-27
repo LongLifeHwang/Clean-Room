@@ -9,14 +9,14 @@ static void door_move(char flag)
         printf("here1\n");
         while (digitalRead(InRemit) == 0)
         {
-            printf("111\n");
-            delay(1000);
+            printf("%d\n", InRemit);
+            delay(100);
         }
         printf("here1\n");
         delay(100);
         while (digitalRead(InRemit) == 1)
         {
-            delay(1000);
+            delay(100);
         }
         softPwmWrite(InServo, 5); //-90 close
     }
