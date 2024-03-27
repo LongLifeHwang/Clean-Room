@@ -60,6 +60,7 @@ void    iot_main(void)
         9.에어샤워
         10.입구 열기
     */
+    printf("here\n");
     door_move('I');
     // ultrasonic_wave(InTrig, InEcho);
     // cleaning(5000);
