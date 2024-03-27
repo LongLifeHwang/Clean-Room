@@ -9,6 +9,7 @@ static void door_move(char flag)
         printf("here1\n");
         while (digitalRead(InRemit) == 0)
         {
+            printf("111\n");
             delay(100);
         }
         printf("here1\n");
