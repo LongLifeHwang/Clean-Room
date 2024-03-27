@@ -2,10 +2,13 @@
 
 void    cleaning(int flag)
 {
-    digitalWrite(MotorRight, HIGH);
-    digitalWrite(MotorLeft, LOW);
+    digitalWrite(Motor1Right, HIGH);
+    digitalWrite(Motor1Left, LOW);
+    digitalWrite(Motor2Right, HIGH);
+    digitalWrite(Motor2Left, LOW);
     delay(flag); //3초
-    digitalWrite(MotorRight, LOW);
+    digitalWrite(Motor1Right, LOW);
+    digitalWrite(Motor2Right, LOW);
 }
 
 //https://m.blog.naver.com/simjk98/222133748955

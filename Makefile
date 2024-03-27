@@ -9,7 +9,7 @@ INC = ./clean_room.h
 all : $(NAME)
 
 $(NAME): $(SOURCE)
-	$(CC) -o $(NAME) $(FLAG) $(SOURCE) -lwiringPi
+	$(CC) -o $(NAME) $(SOURCE) -lwiringPi
 
 .PHONY : clean fclean re all
 clean : 
