@@ -65,12 +65,12 @@ static void init(void)
     // pinMode(OutEcho, INPUT);
     // pinMode(OutDoor, INPUT);
     //입구 잠금 장치
-    pinMode(InRemit, INPUT);
+    // pinMode(InRemit, INPUT);
     pinMode(InServo, OUTPUT);
     softPwmCreate(InServo, 0, 200);
     softPwmWrite(InServo, 5);
     //출구 잠금 장치
-    pinMode(OutRemit, INPUT);
+    // pinMode(OutRemit, INPUT);
     // pinMode(OutServo, PWM_OUTPUT);
     // softPwmCreate(OutServo, 0, 200);
     // softPwmWrite(OutServo, 5); //-90
