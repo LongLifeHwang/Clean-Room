@@ -10,13 +10,13 @@ static void door_move(char flag)
         while (digitalRead(InRemit) == 0)
         {
             printf("111\n");
-            delay(100);
+            delay(1000);
         }
         printf("here1\n");
         delay(100);
         while (digitalRead(InRemit) == 1)
         {
-            delay(100);
+            delay(1000);
         }
         softPwmWrite(InServo, 5); //-90 close
     }
