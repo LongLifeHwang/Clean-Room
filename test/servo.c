@@ -6,7 +6,6 @@
 int main(void)
 {
     wiringPiSetupGpio();
-    pinMode(InServo, OUTPUT);
     softPwmCreate(InServo, 0, 200);
     while (1)
     {
