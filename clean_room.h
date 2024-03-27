@@ -2,6 +2,7 @@
 # define CLEAN_ROOM_H
 
 # include <stdio.h>
+# include <unistd.h>
 # include <fcntl.h>
 # include <stdlib.h>
 # include <sys/wait.h>
@@ -39,7 +40,7 @@
 # define InRemit 6 //22
 //출구 잠금 장치
 # define OutServo 18 //23
-# define OutRemit 26 //25
+# define OutRemit 26
 
 //https://m.blog.naver.com/simjk98/222133748955
 //먼지
