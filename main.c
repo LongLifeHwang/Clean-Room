@@ -33,6 +33,7 @@ static void     parents_process(void)
 
     wait(&status);
     printf("%d\n",status);
+    delay(2000);
     if (status == 0)
         iot_main();
     else
