@@ -80,19 +80,14 @@ void    iot_main(void)
         9.에어샤워
         10.입구 열기
     */
-    printf("here\n");
     door_move('I');
-    printf("here1\n");
     // ultrasonic_wave(InTrig, InEcho);
     // cleaning(5000);
     door_move('O');
-    printf("here2\n");
     // dust_check(); //먼지 확인
     // ultrasonic_wave(OutTrig, OutEcho);
     door_move('O');
-    printf("here3\n");
     // ultrasonic_wave(InTrig, InEcho);
     // cleaning(5000);
     door_move('I');
-    printf("here4\n");
 }
