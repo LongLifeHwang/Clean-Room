@@ -44,7 +44,7 @@ static void     parents_process(void)
 
 static void init(void)
 {
-    if (wiringPiSetupGpio() == -1)
+    if (wiringPiSetup() == -1)
     {
         printf("GPIO error\n");
         exit(1);
@@ -66,12 +66,13 @@ static void init(void)
     // pinMode(OutDoor, INPUT);
     //입구 잠금 장치
     pinMode(InRemit, INPUT);
-    // pullUpDnControl(InRemit, PUD_DOWN);
+    pullUpDnControl(InRemit, PUD_DOWN);
     pinMode(InServo, OUTPUT);
     softPwmCreate(InServo, 0, 200);
     softPwmWrite(InServo, 5);
     //출구 잠금 장치
-    // pinMode(OutRemit, INPUT);
+    pinMode(OutRemit, INPUT);
+    pullUpDnControl(InRemit, PUD_DOWN);
     // pinMode(OutServo, PWM_OUTPUT);
     // softPwmCreate(OutServo, 0, 200);
     // softPwmWrite(OutServo, 5); //-90

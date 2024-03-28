@@ -6,34 +6,37 @@ static void door_move(char flag)
     if (flag == 'I')
     {
         softPwmWrite(InServo, 24); //90 open
-        printf("here1\n");
+        printf("entrance close\n");
         while (digitalRead(InRemit) == 0)
         {
             // if (digitalRead(InRemit) == 0)
             //     break ;
-            printf("here\n");
             delay(100);
         }
-        printf("here11\n");
+        printf("entrance open\n");
         delay(100);
         while (digitalRead(InRemit) == 1)
         {
             delay(100);
         }
+        printf("entrance close\n");
         softPwmWrite(InServo, 5); //-90 close
     }
     else if (flag == 'O')
     {
         softPwmWrite(OutServo, 24); //90 open
+        printf("exit close\n");
         while (digitalRead(OutRemit) == 0)
         {
             delay(100);
         }
         delay(100);
+        printf("exit open\n");
         while (digitalRead(OutRemit) == 1)
         {
             delay(100);
         }
+        printf("exit close\n");
         softPwmWrite(OutServo, 5); //-90 open
     }
 }
