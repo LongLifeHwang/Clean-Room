@@ -7,12 +7,11 @@ static void door_move(char flag)
     {
         softPwmWrite(InServo, 24); //90 open
         printf("here1\n");
-        while (1)
+        while (digitalRead(InRemit) == 0)
         {
             // if (digitalRead(InRemit) == 0)
             //     break ;
-            printf("%d\n", InRemit);
-            delay(1000);
+            delay(100);
         }
         printf("here11\n");
         delay(100);
