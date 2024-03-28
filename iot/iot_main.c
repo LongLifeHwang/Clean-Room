@@ -11,6 +11,7 @@ static void door_move(char flag)
         {
             // if (digitalRead(InRemit) == 0)
             //     break ;
+            printf("here\n");
             delay(100);
         }
         printf("here11\n");
