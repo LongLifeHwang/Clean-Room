@@ -39,7 +39,7 @@
 # define InServo 1
 # define InRemit 22
 //출구 잠금 장치
-# define OutServo 13
+# define OutServo 23
 # define OutRemit 25
 
 //https://m.blog.naver.com/simjk98/222133748955
