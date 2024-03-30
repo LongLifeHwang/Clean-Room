@@ -55,16 +55,8 @@ static void init(void)
     pinMode(Motor1Left, OUTPUT);
     pinMode(Motor2Right, OUTPUT);
     pinMode(Motor2Left, OUTPUT);
-    //입구 초음파
-    // pinMode(InTrig, PWM_OUTPUT);
-    // pinMode(InEcho, INPUT);
-    // pinMode(InDoor, INPUT);
     //입구 인체감지 센서
 
-    //출구 초음파
-    // pinMode(OutTrig, PWM_OUTPUT);
-    // pinMode(OutEcho, INPUT);
-    // pinMode(OutDoor, INPUT);
     //입구 잠금 장치
     pinMode(InRemit, INPUT);
     pullUpDnControl(InRemit, PUD_DOWN);
