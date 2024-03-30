@@ -31,16 +31,20 @@ static void	parents_process(void)
 {
 	int	status;
 
-	wait(&status);
-	printf("%d\n",status);
-	delay(2000);
-	if (status == 0)
-		iot_main();
-	else
-	{
-		printf("yolo error\n");
-		exit(1);
-	}
+    while (1)
+    {
+        waitpid(-1, &status, WNOHANG);
+        if (WIFEXITED(statu))
+        {
+            iot_main('I', 'O');
+            break ;
+        }
+        if (digitalRead(OutRemit) == 0)
+        {
+            iot_main('O', 'I');
+            break ;
+        }
+    }
 }
 
 static void	init(void)
@@ -85,7 +89,6 @@ int	main(int argc, char *argv[], char *envp[])
 	init();
 	while (1)
 	{
-		// dust_check();
 		child = fork();
 		if (child < 0)
 		{

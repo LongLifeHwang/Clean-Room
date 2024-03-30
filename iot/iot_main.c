@@ -12,13 +12,13 @@ static void	door_move(char flag)
 		delay(100);
 		while (digitalRead(InRemit) == 0)
 			delay(100);
+        delay(100);
 		printf("entrance close\n");
 		softPwmWrite(InServo, close);
         softPwmWrite(OutServo, close);
 	}
 	else if (flag == 'O')
 	{
-		softPwmWrite(OutServo, open);
 		while (digitalRead(OutRemit) == 1)
 			delay(100);
 		delay(100);
@@ -32,14 +32,14 @@ static void	door_move(char flag)
 
 static void	rip_check(int flag)
 {
-    printf("...air shower setting...\n");
-    while (digitalRead(OutRemit) == 0 || digitalRead(InRemit) == 0)
+	printf("...air shower setting...\n");
+	while (digitalRead(OutRemit) == 0 || digitalRead(InRemit) == 0)
 		delay(100);
-    softPwmWrite(OutServo, close);
-    softPwmWrite(InServo, close);
-    while (flag && digitalRead(InPerson) == 0)
-        delay(100);
-    printf("air shower starting\n");
+	softPwmWrite(OutServo, close);
+	softPwmWrite(InServo, close);
+	while (flag && digitalRead(InPerson) == 0)
+		delay(100);
+	printf("air shower starting\n");
     // int i;
 
     // i = -1;
@@ -60,7 +60,7 @@ static void	rip_check(int flag)
 	// printf("air shower starting\n");
 }
 
-void	iot_main(void)
+void	iot_main(char way_in, char way_out)
 {
 	/*
 	logic
@@ -75,14 +75,9 @@ void	iot_main(void)
 		9.에어샤워
 		10.입구 열기
 	*/
-	door_move('I');
+	door_move(way_in);
     rip_check(1);
     cleaning(3000);
-	door_move('O');
-	// dust_check(); //먼지 확인
-	// ultrasonic_wave(OutTrig, OutEcho);
-	door_move('O');
-	// ultrasonic_wave(InTrig, InEcho);
-	// cleaning(5000);
-	door_move('I');
+	door_move(way_out);
+	dust_check(); //먼지 확인
 }

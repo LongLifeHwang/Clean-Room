@@ -2,6 +2,10 @@
 
 void	cleaning(int flag)
 {
+    while (digitalRead(OutRemit) == 0 || digitalRead(InRemit) == 0)
+		delay(100);
+	softPwmWrite(OutServo, close);
+	softPwmWrite(InServo, close);
 	digitalWrite(LED, 1);
 	digitalWrite(Motor1Right, 1);
 	digitalWrite(Motor1Left, 0);
@@ -11,6 +15,7 @@ void	cleaning(int flag)
 	digitalWrite(Motor1Right, 0);
 	digitalWrite(Motor2Right, 0);
 	digitalWrite(LED, 0);
+    softPwmWrite(OutServo, open);
 }
 
 //https://m.blog.naver.com/simjk98/222133748955
@@ -21,16 +26,18 @@ void	dust_check(void)
 	unsigned long	flag;
 	int				count;
 
-	cleaning(5000);
+    while (digitalRead(OutRemit) == 0 || digitalRead(InRemit) == 0)
+		delay(100);
+	softPwmWrite(OutServo, close);
+	softPwmWrite(InServo, close);
 	pre = millis();
 	count = 0;
-	flag = 5000;
 	while (1)
 	{
 		cur = millis();
 		if (digitalRead(Dust))
 			count++;
-		if (cur - pre > flag)
+		if (cur - pre > 5000)
 		{
 			if (count > 20) //먼지 체크
 				cleaning(3000);
@@ -38,4 +45,5 @@ void	dust_check(void)
 		}
 		delay(20);
 	}
+    softPwmWrite(OutServo, open);
 }
