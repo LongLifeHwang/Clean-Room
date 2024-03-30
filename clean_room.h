@@ -49,11 +49,10 @@
 
 //ft_split.c
 char	**ft_split(char *str, char c);
-
 //dest_check.c
 void	all_close(void);
 void	dust_check(void);
-void	cleaning(int flag);
+void	exhaust(int flag);
 //iot_main.c
 void	iot_main(void);
 

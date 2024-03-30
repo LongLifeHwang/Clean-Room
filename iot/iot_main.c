@@ -1,5 +1,17 @@
 #include "../clean_room.h"
 
+static void	cleaning(int flag)
+{
+	all_close();
+	digitalWrite(LED, 1);
+	digitalWrite(Motor1Right, 1);
+	digitalWrite(Motor1Left, 0);
+	delay(flag);
+	digitalWrite(Motor1Right, 0);
+	digitalWrite(LED, 0);
+	softPwmWrite(OutServo, open);
+}
+
 //https://blog.naver.com/simjk98/222149165719
 static void	door_move(char flag)
 {
@@ -69,5 +81,6 @@ void	iot_main(char way_in, char way_out)
 	rip_check(1);
 	cleaning(3000);
 	door_move(way_out);
+	exhaust(3000);
 	dust_check(); //먼지 확인
 }

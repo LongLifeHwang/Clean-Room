@@ -8,19 +8,16 @@ void	all_close(void)
 	softPwmWrite(InServo, close);
 }
 
-void	cleaning(int flag)
+void	exhaust(int flag)
 {
 	all_close();
 	digitalWrite(LED, 1);
-	digitalWrite(Motor1Right, 1);
-	digitalWrite(Motor1Left, 0);
 	digitalWrite(Motor2Right, 1);
 	digitalWrite(Motor2Left, 0);
 	delay(flag);
-	digitalWrite(Motor1Right, 0);
 	digitalWrite(Motor2Right, 0);
 	digitalWrite(LED, 0);
-    softPwmWrite(OutServo, open);
+	softPwmWrite(OutServo, open);
 }
 
 //https://m.blog.naver.com/simjk98/222133748955
@@ -42,7 +39,7 @@ void	dust_check(void)
 		if (cur - pre > 5000)
 		{
 			if (count > 20) //먼지 체크
-				cleaning(3000);
+				exhaust(3000);
 			break ;
 		}
 		delay(20);
