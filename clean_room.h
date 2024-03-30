@@ -12,7 +12,7 @@
 # include <softPwm.h>
 
 # define close 5
-# define open 90
+# define open 24
 
 //https://m.blog.naver.com/kimmy5000/220461603097
 //air blower
@@ -36,6 +36,9 @@
 //dust sensor
 //https://m.blog.naver.com/simjk98/222133748955
 # define Dust 23
+
+//LED
+# define LED 6
 
 //bluetooth
 //https://www.youtube.com/watch?v=D01Apli9qq4&list=PLiqbe2cCqMjUbO_VVxyEHPS55X-gflan8&index=8

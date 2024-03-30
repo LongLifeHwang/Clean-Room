@@ -71,6 +71,8 @@ static void	init(void)
 	pinMode(InPerson, INPUT);
 	//dust sensor
 	pinMode(Dust, INPUT);
+    //LED
+    pinMode(LED, OUTPUT);
 	//bluetooth
 }
 
