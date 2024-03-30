@@ -33,6 +33,7 @@ static void	parents_process(void)
         waitpid(-1, &status, WNOHANG);
         if (WIFEXITED(status))
         {
+			softPwmWrite(OutServo, close);
             iot_main('I', 'O');
             break ;
         }
@@ -68,7 +69,7 @@ static void	init(void)
 	pullUpDnControl(InRemit, PUD_DOWN);
 	pinMode(OutServo, OUTPUT);
 	softPwmCreate(OutServo, 0, 200);
-	softPwmWrite(OutServo, close);
+	softPwmWrite(OutServo, open);
 	//clean_room rip sensor
 	pinMode(InPerson, INPUT);
 	//dust sensor
@@ -87,6 +88,7 @@ int	main(int argc, char *argv[], char *envp[])
 	init();
 	while (1)
 	{
+		softPwmWrite(OutServo, open);
 		child = fork();
 		if (child < 0)
 		{

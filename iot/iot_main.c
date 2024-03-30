@@ -15,10 +15,10 @@ static void	door_move(char flag)
 		delay(100);
 		printf("entrance close\n");
 		softPwmWrite(InServo, close);
-        softPwmWrite(OutServo, close);
 	}
 	else if (flag == 'O')
 	{
+		softPwmWrite(OutServo, open);
 		while (digitalRead(OutRemit) == 1)
 			delay(100);
 		delay(100);
@@ -26,17 +26,13 @@ static void	door_move(char flag)
 		while (digitalRead(OutRemit) == 0)
 			delay(100);
 		printf("exit close\n");
-		// softPwmWrite(OutServo, close);
 	}
 }
 
 static void	rip_check(int flag)
 {
 	printf("...air shower setting...\n");
-	while (digitalRead(OutRemit) == 0 || digitalRead(InRemit) == 0)
-		delay(100);
-	softPwmWrite(OutServo, close);
-	softPwmWrite(InServo, close);
+	all_close();
 	while (flag && digitalRead(InPerson) == 0)
 		delay(100);
 	printf("air shower starting\n");

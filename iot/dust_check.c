@@ -1,17 +1,22 @@
 #include "../clean_room.h"
 
-void	cleaning(int flag)
+void	all_close(void)
 {
-    while (digitalRead(OutRemit) == 0 || digitalRead(InRemit) == 0)
+	while (digitalRead(OutRemit) == 0 || digitalRead(InRemit) == 0)
 		delay(100);
 	softPwmWrite(OutServo, close);
 	softPwmWrite(InServo, close);
+}
+
+void	cleaning(int flag)
+{
+	all_close();
 	digitalWrite(LED, 1);
 	digitalWrite(Motor1Right, 1);
 	digitalWrite(Motor1Left, 0);
 	digitalWrite(Motor2Right, 1);
 	digitalWrite(Motor2Left, 0);
-	delay(flag); //3초
+	delay(flag);
 	digitalWrite(Motor1Right, 0);
 	digitalWrite(Motor2Right, 0);
 	digitalWrite(LED, 0);
@@ -26,10 +31,7 @@ void	dust_check(void)
 	unsigned long	flag;
 	int				count;
 
-    while (digitalRead(OutRemit) == 0 || digitalRead(InRemit) == 0)
-		delay(100);
-	softPwmWrite(OutServo, close);
-	softPwmWrite(InServo, close);
+	all_close();
 	pre = millis();
 	count = 0;
 	while (1)
