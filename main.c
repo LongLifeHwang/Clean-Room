@@ -34,7 +34,7 @@ static void	parents_process(void)
     while (1)
     {
         waitpid(-1, &status, WNOHANG);
-        if (WIFEXITED(statu))
+        if (WIFEXITED(status))
         {
             iot_main('I', 'O');
             break ;
@@ -42,6 +42,7 @@ static void	parents_process(void)
         if (digitalRead(OutRemit) == 0)
         {
             iot_main('O', 'I');
+			wait(&status);
             break ;
         }
     }
