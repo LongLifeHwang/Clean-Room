@@ -12,7 +12,7 @@ static void	door_move(char flag)
 		delay(100);
 		while (digitalRead(InRemit) == 0)
 			delay(100);
-        delay(100);
+		delay(100);
 		printf("entrance close\n");
 		softPwmWrite(InServo, close);
         softPwmWrite(OutServo, close);
@@ -64,20 +64,14 @@ void	iot_main(char way_in, char way_out)
 {
 	/*
 	logic
-		1.entrance open and close
+		1.way_in open and close
 		2.rip check
 		3.air shower
-		4.출구 열기
-		5.잠깐 기다리기
-		6.나오는 것 감지
-		7.출구 열기
-		8.초음파로 감지
-		9.에어샤워
-		10.입구 열기
+		4.way_out open adn close
 	*/
 	door_move(way_in);
-    rip_check(1);
-    cleaning(3000);
+	rip_check(1);
+	cleaning(3000);
 	door_move(way_out);
 	dust_check(); //먼지 확인
 }
