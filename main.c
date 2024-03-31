@@ -24,7 +24,7 @@ static void	child_process(char *argv[], char *envp[])
 	execve("/usr/bin/python3", command, envp);
 }
 
-static void	parents_process(void)
+static void	parents_process(pid_t child)
 {
 	int	status;
 
@@ -41,7 +41,7 @@ static void	parents_process(void)
 		if (digitalRead(OutRemit) == 1) //answer : 1
 		{
 			iot_main('O', 'I');
-			kill(-1, SIGKILL);
+			kill(child, SIGKILL);
 			break ;
 		}
 	}
@@ -99,7 +99,7 @@ int	main(int argc, char *argv[], char *envp[])
 		else if (child == 0)
 			child_process(argv, envp);
 		else
-			parents_process();
+			parents_process(child);
 	}
 	exit (0);
 }
