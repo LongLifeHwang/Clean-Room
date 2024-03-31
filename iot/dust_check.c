@@ -10,7 +10,7 @@ void	all_close(void)
 
 void	exhaust(int flag)
 {
-	all_close();
+	all_close(); 
 	digitalWrite(LED, 1);
 	digitalWrite(Motor2Right, 1);
 	digitalWrite(Motor2Left, 0);
