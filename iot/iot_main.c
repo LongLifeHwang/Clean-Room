@@ -1,6 +1,6 @@
 #include "../clean_room.h"
 
-static void	cleaning(int left, int right, int flag)
+void	cleaning(int left, int right, int flag)
 {
 	all_close();
 	digitalWrite(LED, 1);

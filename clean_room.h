@@ -54,6 +54,7 @@ char	**ft_split(char *str, char c);
 void	all_close(void);
 void	exhaust(int flag);
 //iot_main.c
-void	iot_main(void);
+void	iot_main(char way_in, char way_out);
+void	cleaning(int left, int right, int flag);
 
 #endif
