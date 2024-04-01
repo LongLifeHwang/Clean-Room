@@ -35,10 +35,10 @@
 
 //dust sensor
 //https://m.blog.naver.com/simjk98/222133748955
-# define Dust 22
+# define Dust 3
 
 //LED
-# define LED 6
+# define LED 2
 
 //bluetooth
 //https://www.youtube.com/watch?v=D01Apli9qq4&list=PLiqbe2cCqMjUbO_VVxyEHPS55X-gflan8&index=8
