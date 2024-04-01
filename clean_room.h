@@ -52,7 +52,6 @@
 char	**ft_split(char *str, char c);
 //dust_check.c
 void	all_close(void);
-void	dust_check(void);
 void	exhaust(int flag);
 //iot_main.c
 void	iot_main(void);

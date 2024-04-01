@@ -1,13 +1,13 @@
 #include "../clean_room.h"
 
-static void	cleaning(int flag)
+static void	cleaning(int left, int right, int flag)
 {
 	all_close();
 	digitalWrite(LED, 1);
-	digitalWrite(Motor1Right, 1);
-	digitalWrite(Motor1Left, 0);
+	digitalWrite(left, 1);
+	digitalWrite(right, 0);
 	delay(flag);
-	digitalWrite(Motor1Right, 0);
+	digitalWrite(left, 0);
 	digitalWrite(LED, 0);
 }
 
@@ -78,8 +78,8 @@ void	iot_main(char way_in, char way_out)
 	*/
 	door_move(way_in);
 	rip_check(1);
-	cleaning(3000);
+	cleaning(Motor1Left, Motor1Right, 3000);
 	door_move(way_out);
-	exhaust(3000);
+	cleaning(Motor2Left, Motor2Right, 3000);
 	// dust_check(); //먼지 확인
 }
