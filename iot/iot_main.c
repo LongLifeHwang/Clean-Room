@@ -40,31 +40,39 @@ static void	door_move(char flag)
 	}
 }
 
-static void	rip_check(int flag)
+static void	ultrasonic_check(void)
 {
-	printf("...air shower setting...\n");
-	all_close();
-	while (flag && digitalRead(InPerson) == 0)
-		delay(100);
-	printf("air shower starting\n");
-	// int i;
+	int		dis;
+	long	start;
+	long	end;
+	int		count;
 
-	// i = -1;
-	// while (flag && digitalRead(InPerson) == 0);
-	// printf("...air shower setting...\n");
-	// while (digitalRead(InPerson) == 1);
-	// while (++i < 20)
-	// {
-	// 	if (digitalRead(InPerson) == 1)
-	// 		break ;
-	// 	delay(100);
-	// }
-	// if (i < 20)
-	// {
-	// 	printf("move checking!!!\n...restarting...\n");
-	// 	rip_check(0);
-	// }
-	// printf("air shower starting\n");
+	count = 0;
+	while (1)
+	{
+		digitalWrite(trig, LOW);
+		usleep(2);
+		digitalWrite(trig, HIGH);
+		usleep(20);
+		digitalWrite(trig, LOW);
+		while (digitalRead(echo) == LOW);
+		start = micros();
+		while (digitalRead(echo) == HIGH);
+		end = micros() - start;
+		dis = end / 58;
+		printf("distance : %dcm\n", dis);
+		//ultrasonic_up(210mm)
+		// if (dis < 10)
+		// 	break ;
+		//ultrasonic_width(75mm)
+		if (dis < 4)
+			count++;
+		else
+			count = 0;
+		if (count > 4)
+			break ;
+		delay(500);
+	}
 }
 
 void	iot_main(char way_in, char way_out)
@@ -77,7 +85,7 @@ void	iot_main(char way_in, char way_out)
 		4.way_out open adn close
 	*/
 	door_move(way_in);
-	rip_check(1);
+	ultrasonic_check();
 	cleaning(Motor1Left, Motor1Right, 3000);
 	door_move(way_out);
 	cleaning(Motor2Left, Motor2Right, 3000);
