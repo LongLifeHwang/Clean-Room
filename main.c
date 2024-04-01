@@ -28,22 +28,23 @@ static void	parents_process(void)
 {
 	int	status;
 
-    while (1)
-    {
-        waitpid(-1, &status, WNOHANG);
-        if (WIFEXITED(status))
-        {
+	while (1)
+	{
+		waitpid(-1, &status, WNOHANG);
+		printf("WIFEXITED(status) : %d\n", WIFEXITED(status));
+		if (WIFEXITED(status))
+		{
 			softPwmWrite(OutServo, close);
-            iot_main('I', 'O');
-            break ;
-        }
-        if (digitalRead(OutRemit) == 0)
-        {
-            iot_main('O', 'I');
+			iot_main('I', 'O');
+			break ;
+		}
+		if (digitalRead(OutRemit) == 0)
+		{
+			iot_main('O', 'I');
 			kill(-1, SIGKILL);
-            break ;
-        }
-    }
+			break ;
+		}
+	}
 }
 
 static void	init(void)
@@ -72,8 +73,8 @@ static void	init(void)
 	pinMode(InPerson, INPUT);
 	//dust sensor
 	pinMode(Dust, INPUT);
-    //LED
-    pinMode(LED, OUTPUT);
+	//LED
+	pinMode(LED, OUTPUT);
 	//bluetooth
 }
 
@@ -83,12 +84,12 @@ int	main(int argc, char *argv[], char *envp[])
 
 	if (argc != 2)
 		exit(0);
-    // delay(10000);  //starting roading
+	// delay(10000);  //starting roading
 	init();
 	while (1)
 	{
 		softPwmWrite(OutServo, open);
-        softPwmWrite(InServo, close);
+		softPwmWrite(InServo, close);
 		child = fork();
 		if (child < 0)
 		{
