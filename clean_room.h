@@ -50,7 +50,7 @@
 
 //ft_split.c
 char	**ft_split(char *str, char c);
-//dest_check.c
+//dust_check.c
 void	all_close(void);
 void	dust_check(void);
 void	exhaust(int flag);
