@@ -35,7 +35,7 @@
 
 //dust sensor
 //https://m.blog.naver.com/simjk98/222133748955
-# define Dust 23
+# define Dust 22
 
 //LED
 # define LED 6
