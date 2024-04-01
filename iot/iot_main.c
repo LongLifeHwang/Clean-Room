@@ -47,9 +47,9 @@ static void	rip_check(int flag)
 	while (flag && digitalRead(InPerson) == 0)
 		delay(100);
 	printf("air shower starting\n");
-    // int i;
+	// int i;
 
-    // i = -1;
+	// i = -1;
 	// while (flag && digitalRead(InPerson) == 0);
 	// printf("...air shower setting...\n");
 	// while (digitalRead(InPerson) == 1);
@@ -58,7 +58,7 @@ static void	rip_check(int flag)
 	// 	if (digitalRead(InPerson) == 1)
 	// 		break ;
 	// 	delay(100);
-    // }
+	// }
 	// if (i < 20)
 	// {
 	// 	printf("move checking!!!\n...restarting...\n");
