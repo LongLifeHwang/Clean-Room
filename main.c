@@ -40,7 +40,7 @@ static void	parents_process(void)
         if (digitalRead(OutRemit) == 0)
         {
             iot_main('O', 'I');
-			wait(&status);
+			kill(-1, SIGKILL);
             break ;
         }
     }

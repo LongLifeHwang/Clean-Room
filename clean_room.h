@@ -6,6 +6,7 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <sys/wait.h>
+# include <signal.h>
 
 //rasberry pi setting
 # include <wiringPi.h>
