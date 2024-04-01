@@ -70,7 +70,8 @@ static void	init(void)
 	pinMode(OutServo, OUTPUT);
 	softPwmCreate(OutServo, 0, 200);
 	//clean_room rip sensor
-	pinMode(InPerson, INPUT);
+	pinMode(trig, OUTPUT);
+	pinMode(echo, INPUT);
 	//dust sensor
 	pinMode(Dust, INPUT);
 	//LED

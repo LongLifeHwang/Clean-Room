@@ -31,8 +31,9 @@
 # define OutServo 23
 # define OutRemit 25
 
-//clean_room rip sensor
-# define InPerson 21
+//ultrasonic sensor
+# define trig 5
+# define echo 4
 
 //dust sensor
 //https://m.blog.naver.com/simjk98/222133748955
