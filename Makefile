@@ -11,9 +11,9 @@ all : $(NAME)
 $(NAME): $(SOURCE)
 	$(CC) -o $(NAME) $(SOURCE) -lwiringPi
 
-.PHONY : fclean re all
+.PHONY : clean re all
 
-fclean :
+clean :
 	rm -f $(NAME)
 
 re :
