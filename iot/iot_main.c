@@ -81,5 +81,5 @@ void	iot_main(char way_in, char way_out)
 	cleaning(3000);
 	door_move(way_out);
 	exhaust(3000);
-	dust_check(); //먼지 확인
+	// dust_check(); //먼지 확인
 }

@@ -2,7 +2,7 @@
 
 void	all_close(void)
 {
-	while (digitalRead(OutRemit) == 0 || digitalRead(InRemit) == 0)
+	while (digitalRead(OutRemit) == 1 || digitalRead(InRemit) == 1) //answer : 0
 		delay(100);
 	softPwmWrite(OutServo, close);
 	softPwmWrite(InServo, close);
