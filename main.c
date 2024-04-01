@@ -38,7 +38,7 @@ static void	parents_process(void)
 			iot_main('I', 'O');
 			break ;
 		}
-		if (digitalRead(OutRemit) == 0)
+		if (digitalRead(OutRemit) == 1) //answer : 1
 		{
 			iot_main('O', 'I');
 			kill(-1, SIGKILL);
