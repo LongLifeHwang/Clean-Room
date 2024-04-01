@@ -83,6 +83,7 @@ int	main(int argc, char *argv[], char *envp[])
 
 	if (argc != 2)
 		exit(0);
+    // delay(10000);  //starting roading
 	init();
 	while (1)
 	{
