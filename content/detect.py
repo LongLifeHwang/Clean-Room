@@ -65,6 +65,7 @@ from utils.general import (
 )
 from utils.torch_utils import select_device, smart_inference_mode
 
+flag = 0
 
 @smart_inference_mode()
 def run(
@@ -250,7 +251,25 @@ def run(
                         save_path = str(Path(save_path).with_suffix(".mp4"))  # force *.mp4 suffix on results videos
                         vid_writer[i] = cv2.VideoWriter(save_path, cv2.VideoWriter_fourcc(*"mp4v"), fps, (w, h))
                     vid_writer[i].write(im0)
-
+        # print(det)
+        print("start")
+        global flag
+        H = 0
+        J = 0
+        if (len(det)):
+            for j in s:
+                if (j == 'H'):
+                    H = 1
+                elif (j == 'Y'):
+                    J = 1
+        if (H == 1 and J == 1):
+            flag += 1
+        else:
+            print("hello wordl")
+            flag = 0
+        print(flag)
+        if (flag >= 10):
+            exit(0)
         # Print time (inference-only)
         LOGGER.info(f"{s}{'' if len(det) else '(no detections), '}{dt[1].dt * 1E3:.1f}ms")
 
