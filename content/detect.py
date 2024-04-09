@@ -265,9 +265,7 @@ def run(
         if (H == 1 and J == 1):
             flag += 1
         else:
-            print("hello wordl")
             flag = 0
-        print(flag)
         if (flag >= 10):
             exit(0)
         # Print time (inference-only)
