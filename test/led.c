@@ -15,8 +15,8 @@ int main(void)
     while (1)
     {
         digitalWrite(LED, HIGH);
-        sleep(1);
+        delay(1000);
         digitalWrite(LED, LOW);
-        sleep(1);
+        delay(1000);
     }
 }
