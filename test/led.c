@@ -1,4 +1,5 @@
 # include <wiringPi.h>
+# include <stdio.h>
 # define LED 0
 
 int main(void)
