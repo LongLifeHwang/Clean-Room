@@ -24,26 +24,27 @@ static void	child_process(char *argv[], char *envp[])
 	execve("/usr/bin/python3", command, envp);
 }
 
-static void	parents_process(void)
+static void	parents_process(pid_t child)
 {
 	int	status;
 
-    while (1)
-    {
-        waitpid(-1, &status, WNOHANG);
-        if (WIFEXITED(status))
-        {
+	while (1)
+	{
+		waitpid(-1, &status, WNOHANG);
+		printf("WIFEXITED(status) : %d\n", WIFEXITED(status));
+		if (WIFEXITED(status))
+		{
 			softPwmWrite(OutServo, close);
-            iot_main('I', 'O');
-            break ;
-        }
-        if (digitalRead(OutRemit) == 0)
-        {
-            iot_main('O', 'I');
-			wait(&status);
-            break ;
-        }
-    }
+			iot_main('I', 'O');
+			break ;
+		}
+		if (digitalRead(OutRemit) == 1) //answer : 1
+		{
+			iot_main('O', 'I');
+			kill(child, SIGKILL);
+			break ;
+		}
+	}
 }
 
 static void	init(void)
@@ -63,19 +64,18 @@ static void	init(void)
 	pullUpDnControl(InRemit, PUD_DOWN);
 	pinMode(InServo, OUTPUT);
 	softPwmCreate(InServo, 0, 200);
-	softPwmWrite(InServo, close);
 	//exit lock
 	pinMode(OutRemit, INPUT);
 	pullUpDnControl(InRemit, PUD_DOWN);
 	pinMode(OutServo, OUTPUT);
 	softPwmCreate(OutServo, 0, 200);
-	softPwmWrite(OutServo, open);
 	//clean_room rip sensor
-	pinMode(InPerson, INPUT);
+	pinMode(trig, OUTPUT);
+	pinMode(echo, INPUT);
 	//dust sensor
 	pinMode(Dust, INPUT);
-    //LED
-    pinMode(LED, OUTPUT);
+	//LED
+	pinMode(LED, OUTPUT);
 	//bluetooth
 }
 
@@ -85,10 +85,12 @@ int	main(int argc, char *argv[], char *envp[])
 
 	if (argc != 2)
 		exit(0);
+	// delay(10000);  //starting roading
 	init();
 	while (1)
 	{
 		softPwmWrite(OutServo, open);
+		softPwmWrite(InServo, close);
 		child = fork();
 		if (child < 0)
 		{
@@ -98,7 +100,7 @@ int	main(int argc, char *argv[], char *envp[])
 		else if (child == 0)
 			child_process(argv, envp);
 		else
-			parents_process();
+			parents_process(child);
 	}
 	exit (0);
 }

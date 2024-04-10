@@ -6,6 +6,7 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <sys/wait.h>
+# include <signal.h>
 
 //rasberry pi setting
 # include <wiringPi.h>
@@ -30,15 +31,16 @@
 # define OutServo 23
 # define OutRemit 25
 
-//clean_room rip sensor
-# define InPerson 21
+//ultrasonic sensor
+# define trig 5
+# define echo 4
 
 //dust sensor
 //https://m.blog.naver.com/simjk98/222133748955
-# define Dust 23
+# define Dust 3
 
 //LED
-# define LED 6
+# define LED 2
 
 //bluetooth
 //https://www.youtube.com/watch?v=D01Apli9qq4&list=PLiqbe2cCqMjUbO_VVxyEHPS55X-gflan8&index=8
@@ -49,11 +51,11 @@
 
 //ft_split.c
 char	**ft_split(char *str, char c);
-//dest_check.c
+//dust_check.c
 void	all_close(void);
-void	dust_check(void);
 void	exhaust(int flag);
 //iot_main.c
-void	iot_main(void);
+void	iot_main(char way_in, char way_out);
+void	cleaning(int left, int right, int flag);
 
 #endif

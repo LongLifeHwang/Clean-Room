@@ -11,15 +11,11 @@ all : $(NAME)
 $(NAME): $(SOURCE)
 	$(CC) -o $(NAME) $(SOURCE) -lwiringPi
 
-.PHONY : clean fclean re all
-clean : 
-	rm -f $(OBJS)
+.PHONY : clean re all
 
-fclean :
-	rm -f $(OBJS)
+clean :
 	rm -f $(NAME)
 
 re :
-	rm -f $(OBJS)
 	rm -f $(NAME)
 	make all

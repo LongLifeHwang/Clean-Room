@@ -1,13 +1,13 @@
 #include "../clean_room.h"
 
-static void	cleaning(int flag)
+void	cleaning(int left, int right, int flag)
 {
 	all_close();
 	digitalWrite(LED, 1);
-	digitalWrite(Motor1Right, 1);
-	digitalWrite(Motor1Left, 0);
+	digitalWrite(left, 1);
+	digitalWrite(right, 0);
 	delay(flag);
-	digitalWrite(Motor1Right, 0);
+	digitalWrite(left, 0);
 	digitalWrite(LED, 0);
 }
 
@@ -17,11 +17,11 @@ static void	door_move(char flag)
 	if (flag == 'I')
 	{
 		softPwmWrite(InServo, open);
-		while (digitalRead(InRemit) == 1)
+		while (digitalRead(InRemit) == 0)  //answer : 1
 			delay(100);
 		printf("entrance open\n");
 		delay(100);
-		while (digitalRead(InRemit) == 0)
+		while (digitalRead(InRemit) == 1) //answer : 0
 			delay(100);
 		delay(100);
 		printf("entrance close\n");
@@ -30,41 +30,49 @@ static void	door_move(char flag)
 	else if (flag == 'O')
 	{
 		softPwmWrite(OutServo, open);
-		while (digitalRead(OutRemit) == 1)
+		while (digitalRead(OutRemit) == 0) //answer : 1
 			delay(100);
 		delay(100);
 		printf("exit open\n");
-		while (digitalRead(OutRemit) == 0)
+		while (digitalRead(OutRemit) == 1) //answer : 0
 			delay(100);
 		printf("exit close\n");
 	}
 }
 
-static void	rip_check(int flag)
+static void	ultrasonic_check(void)
 {
-	printf("...air shower setting...\n");
-	all_close();
-	while (flag && digitalRead(InPerson) == 0)
-		delay(100);
-	printf("air shower starting\n");
-    // int i;
+	int		dis;
+	long	start;
+	long	end;
+	int		count;
 
-    // i = -1;
-	// while (flag && digitalRead(InPerson) == 0);
-	// printf("...air shower setting...\n");
-	// while (digitalRead(InPerson) == 1);
-	// while (++i < 20)
-	// {
-	// 	if (digitalRead(InPerson) == 1)
-	// 		break ;
-	// 	delay(100);
-    // }
-	// if (i < 20)
-	// {
-	// 	printf("move checking!!!\n...restarting...\n");
-	// 	rip_check(0);
-	// }
-	// printf("air shower starting\n");
+	count = 0;
+	while (1)
+	{
+		digitalWrite(trig, 0);
+		usleep(2);
+		digitalWrite(trig, 1);
+		usleep(20);
+		digitalWrite(trig, 0);
+		while (digitalRead(echo) == 0);
+		start = micros();
+		while (digitalRead(echo) == 1);
+		end = micros() - start;
+		dis = end / 58;
+		printf("distance : %dcm\n", dis);
+		//ultrasonic_up(210mm)
+		// if (dis < 10)
+		// 	break ;
+		//ultrasonic_width(75mm)
+		if (dis < 4)
+			count++;
+		else
+			count = 0;
+		if (count > 4)
+			break ;
+		delay(500);
+	}
 }
 
 void	iot_main(char way_in, char way_out)
@@ -77,9 +85,9 @@ void	iot_main(char way_in, char way_out)
 		4.way_out open adn close
 	*/
 	door_move(way_in);
-	rip_check(1);
-	cleaning(3000);
+	ultrasonic_check();
+	cleaning(Motor1Left, Motor1Right, 3000);
 	door_move(way_out);
-	exhaust(3000);
-	dust_check(); //먼지 확인
+	cleaning(Motor2Left, Motor2Right, 3000);
+	// dust_check(); //먼지 확인
 }
