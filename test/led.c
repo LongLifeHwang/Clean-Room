@@ -9,7 +9,7 @@ int main(void)
     if (wiringPiSetup() == -1)
 	{
 		printf("GPIO error\n");
-		exit(1);
+        return (0);
 	}
     pinMode(LED, OUTPUT);
     while (1)
