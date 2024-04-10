@@ -32,8 +32,9 @@ static void	parents_process(pid_t child)
 	{
 		waitpid(-1, &status, WNOHANG);
 		printf("WIFEXITED(status) : %d\n", WIFEXITED(status));
-		if (WIFEXITED(status))
+		if (!WIFEXITED(status))
 		{
+			printf("here\n");
 			softPwmWrite(OutServo, close);
 			iot_main('I', 'O');
 			break ;
