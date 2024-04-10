@@ -32,8 +32,8 @@
 # define OutRemit 25
 
 //ultrasonic sensor
-# define trig 5
-# define echo 4
+# define trig 4
+# define echo 5
 
 //dust sensor
 //https://m.blog.naver.com/simjk98/222133748955
