@@ -1,5 +1,7 @@
 # include <wiringPi.h>
 # include <stdio.h>
+# include <sys/wait.h>
+
 # define LED 0
 
 int main(void)
