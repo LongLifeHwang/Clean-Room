@@ -28,24 +28,26 @@ static void	parents_process(pid_t child)
 {
 	int	status;
 
-	while (1)
-	{
-		waitpid(-1, &status, WNOHANG);
-		printf("WIFEXITED(status) : %d\n", WIFEXITED(status));
-		if (!WIFEXITED(status))
-		{
-			printf("here\n");
-			softPwmWrite(OutServo, close);
-			iot_main('I', 'O');
-			break ;
-		}
-		if (digitalRead(OutRemit) == 1) //answer : 1
-		{
-			iot_main('O', 'I');
-			kill(child, SIGKILL);
-			break ;
-		}
-	}
+	wait(&status);
+	iot_main('I', 'O');
+	// while (1)
+	// {
+	// 	waitpid(-1, &status, WNOHANG);
+	// 	printf("WIFEXITED(status) : %d\n", WIFEXITED(status));
+	// 	if (WIFEXITED(status))
+	// 	{
+	// 		printf("here\n");
+	// 		softPwmWrite(OutServo, close);
+	// 		iot_main('I', 'O');
+	// 		break ;
+	// 	}
+	// 	if (digitalRead(OutRemit) == 1) //answer : 1
+	// 	{
+	// 		iot_main('O', 'I');
+	// 		kill(child, SIGKILL);
+	// 		break ;
+	// 	}
+	// }
 }
 
 static void	init(void)
