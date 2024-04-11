@@ -17,7 +17,7 @@ int main(void)
     flag = 0;
     while (flag++ < 10)
     {
-        printf("digtiralRead(LED) : %d\n", digtalRead(LED));
+        printf("digitalRead(LED) : %d\n", digitalRead(LED));
         delay(500);
     }
     return (0);
