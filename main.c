@@ -36,13 +36,12 @@ static void	parents_process(pid_t child)
 	fd = open("log", O_RDONLY);
 	while (1)
 	{
-		printf("WIFEXITED(status) : %d\n", WIFEXITED(status));
 		ret = read(fd, buff, 20);
 		buff[ret] = '\0';
 		if (buff[0] == 'O')
 		{
 			close(fd);
-			softPwmWrite(OutServo, close);
+			softPwmWrite(OutServo, Close);
 			iot_main('I', 'O');
 			fd = open("log", O_WRONLY, O_TRUNC);
 			close(fd);
