@@ -252,7 +252,6 @@ def run(
                         vid_writer[i] = cv2.VideoWriter(save_path, cv2.VideoWriter_fourcc(*"mp4v"), fps, (w, h))
                     vid_writer[i].write(im0)
         # print(det)
-        print("start")
         global flag
         H = 0
         J = 0
