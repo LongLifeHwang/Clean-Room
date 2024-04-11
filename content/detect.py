@@ -265,10 +265,6 @@ def run(
             flag += 1
         # else:
         #     flag = 0
-        flag += 5
-        if (flag >= 50):
-            flag = 0
-            print('O') 
         # Print time (inference-only)
         # LOGGER.info(f"{s}{'' if len(det) else '(no detections), '}{dt[1].dt * 1E3:.1f}ms")
 
@@ -321,9 +317,11 @@ def parse_opt():
 
 def main(opt):
     """Executes YOLOv5 model inference with given options, checking requirements before running the model."""
-    if (flag <= 5):
+    if (flag <= 10):
         check_requirements(ROOT / "requirements.txt", exclude=("tensorboard", "thop"))
         run(**vars(opt))
+    else:
+        sys.exit(0)
 
 
 if __name__ == "__main__":
