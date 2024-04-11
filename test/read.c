@@ -19,6 +19,8 @@ int main(void)
     {
         printf("digitalRead(LED) : %d\n", digitalRead(LED));
         delay(1000);
+        printf("digitalRead(LED) : %d\n", digitalRead(LED));
+        delay(1000);
     }
     return (0);
 }
