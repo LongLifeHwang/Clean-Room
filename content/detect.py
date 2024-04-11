@@ -263,10 +263,11 @@ def run(
                     J = 1
         if (H == 1 and J == 1):
             flag += 1
-        else:
-            flag = 0
-        if (flag >= 10):
-            print('O')
+        # else:
+        #     flag = 0
+        flag += 5
+        if (flag >= 50):
+            print('O') 
         # Print time (inference-only)
         # LOGGER.info(f"{s}{'' if len(det) else '(no detections), '}{dt[1].dt * 1E3:.1f}ms")
 
