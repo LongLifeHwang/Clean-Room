@@ -319,8 +319,9 @@ def parse_opt():
 
 def main(opt):
     """Executes YOLOv5 model inference with given options, checking requirements before running the model."""
-    check_requirements(ROOT / "requirements.txt", exclude=("tensorboard", "thop"))
-    run(**vars(opt))
+    if (flag <= 5):
+        check_requirements(ROOT / "requirements.txt", exclude=("tensorboard", "thop"))
+        run(**vars(opt))
 
 
 if __name__ == "__main__":

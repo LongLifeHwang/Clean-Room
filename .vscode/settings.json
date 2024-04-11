@@ -1,5 +1,8 @@
 {
     "files.associations": {
-        "clean_room.h": "c"
+        "clean_room.h": "c",
+        "stdio.h": "c",
+        "fcntl.h": "c",
+        "signal.h": "c"
     }
 }

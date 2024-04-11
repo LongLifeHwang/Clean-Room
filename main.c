@@ -17,7 +17,10 @@ in : cooler(8)
 static void	child_process(char *argv[], char *envp[])
 {
 	char	**command;
+	int		fd;
 
+	fd = open("log", O_WRONLY, O_CREAT, O_TRUNC, 0777);
+	dup2(fd, 1);
 	command = ft_split(argv[1], ' ');
 	if (command == NULL)
 		exit (1);
@@ -26,28 +29,32 @@ static void	child_process(char *argv[], char *envp[])
 
 static void	parents_process(pid_t child)
 {
-	int	status;
+	char	buff[20];
+	int		fd;
+	int		ret;
 
-	wait(&status);
-	iot_main('I', 'O');
-	// while (1)
-	// {
-	// 	waitpid(-1, &status, WNOHANG);
-	// 	printf("WIFEXITED(status) : %d\n", WIFEXITED(status));
-	// 	if (WIFEXITED(status))
-	// 	{
-	// 		printf("here\n");
-	// 		softPwmWrite(OutServo, close);
-	// 		iot_main('I', 'O');
-	// 		break ;
-	// 	}
-	// 	if (digitalRead(OutRemit) == 1) //answer : 1
-	// 	{
-	// 		iot_main('O', 'I');
-	// 		kill(child, SIGKILL);
-	// 		break ;
-	// 	}
-	// }
+	fd = open("log", O_RDONLY);
+	while (1)
+	{
+		printf("WIFEXITED(status) : %d\n", WIFEXITED(status));
+		ret = read(fd, buff, 20);
+		buff[ret] = '\0';
+		if (buff[0] == 'O')
+		{
+			close(fd);
+			softPwmWrite(OutServo, close);
+			iot_main('I', 'O');
+			fd = open("log", O_WRONLY, O_TRUNC);
+			close(fd);
+		}
+		if (digitalRead(OutRemit) == 1) //answer : 1
+		{
+			close(fd);
+			iot_main('O', 'I');
+			fd = open("log", O_WRONLY, O_TRUNC);
+			close(fd);
+		}
+	}
 }
 
 static void	init(void)
