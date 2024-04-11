@@ -33,6 +33,7 @@ static void	parents_process(pid_t child)
 	int		fd;
 	int		ret;
 
+	delay(1000);
 	fd = open("log", O_RDONLY);
 	while (1)
 	{
