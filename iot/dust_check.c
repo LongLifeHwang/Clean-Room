@@ -4,8 +4,8 @@ void	all_close(void)
 {
 	while (digitalRead(OutRemit) == 1 || digitalRead(InRemit) == 1) //answer : 0
 		delay(100);
-	softPwmWrite(OutServo, close);
-	softPwmWrite(InServo, close);
+	softPwmWrite(OutServo, Close);
+	softPwmWrite(InServo, Close);
 }
 
 //https://m.blog.naver.com/simjk98/222133748955
