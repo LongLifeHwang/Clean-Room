@@ -99,8 +99,8 @@ int	main(int argc, char *argv[], char *envp[])
 	init();
 	while (1)
 	{
-		softPwmWrite(OutServo, open);
-		softPwmWrite(InServo, close);
+		softPwmWrite(OutServo, Open);
+		softPwmWrite(InServo, Close);
 		child = fork();
 		if (child < 0)
 		{

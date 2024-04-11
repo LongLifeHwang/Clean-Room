@@ -32,5 +32,5 @@ void	dust_check(void)
 		}
 		delay(20);
 	}
-    softPwmWrite(OutServo, open);
+    softPwmWrite(OutServo, Open);
 }

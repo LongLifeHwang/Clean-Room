@@ -12,8 +12,8 @@
 # include <wiringPi.h>
 # include <softPwm.h>
 
-# define close 5
-# define open 24
+# define Close 5
+# define Open 24
 
 //https://m.blog.naver.com/kimmy5000/220461603097
 //air blower
