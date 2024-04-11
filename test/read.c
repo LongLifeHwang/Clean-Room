@@ -15,7 +15,7 @@ int main(void)
 	}
     pinMode(LED, INPUT);
     flag = 0;
-    while (flag++ < 10)
+    while (flag++ < 10000)
     {
         printf("digitalRead(LED) : %d\n", digitalRead(LED));
         delay(100);
