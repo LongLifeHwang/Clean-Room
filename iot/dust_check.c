@@ -17,7 +17,6 @@ void	exhaust(int flag)
 	delay(flag);
 	digitalWrite(Motor2Right, 0);
 	digitalWrite(LED, 0);
-	softPwmWrite(OutServo, open);
 }
 
 //https://m.blog.naver.com/simjk98/222133748955

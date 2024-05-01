@@ -9,7 +9,6 @@ static void	cleaning(int flag)
 	delay(flag);
 	digitalWrite(Motor1Right, 0);
 	digitalWrite(LED, 0);
-	softPwmWrite(OutServo, open);
 }
 
 //https://blog.naver.com/simjk98/222149165719
