@@ -17,12 +17,12 @@ static void	door_move(char flag)
 	if (flag == 'I')
 	{
 		softPwmWrite(InServo, Open);
-		delay(200);
+		// delay(200);
 		//digitalWrite(InServo, 0);
 		while (digitalRead(InRemit) == 0)  //answer : 1
 			delay(100);
 		printf("entrance open\n");
-		delay(100);
+		// delay(100);
 		while (digitalRead(InRemit) == 1) //answer : 0
 			delay(100);
 		delay(100);
