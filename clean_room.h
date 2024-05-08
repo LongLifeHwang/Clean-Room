@@ -17,10 +17,10 @@
 
 //https://m.blog.naver.com/kimmy5000/220461603097
 //air blower
-# define Motor1Right 26
-# define Motor1Left 27
-# define Motor2Right 28
-# define Motor2Left 29
+# define Motor1Right 27
+# define Motor1Left 26
+# define Motor2Right 29
+# define Motor2Left 28
 
 //entrance lock
 //https://blog.naver.com/simjk98/222149165719
@@ -47,7 +47,6 @@
 //https://chat.openai.com/share/66a11e17-5bcc-4528-9ad2-018081583d22
 # define BlueTxd 15
 # define BlueRxd 16
-
 
 //ft_split.c
 char	**ft_split(char *str, char c);
