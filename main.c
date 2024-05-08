@@ -12,15 +12,15 @@ in : cooler(8)
 */
 
 #include "./clean_room.h"
-
+#include <wiringPi.h>
 //ai yolo v5
 static void	child_process(char *argv[], char *envp[])
 {
 	char	**command;
-	int		fd;
 
-	fd = open("log", O_WRONLY, O_CREAT, O_TRUNC, 0777);
-	dup2(fd, 1);
+	printf("here\n");
+	pinMode(InServo, INPUT);
+	pinMode(OutServo, INPUT);
 	command = ft_split(argv[1], ' ');
 	if (command == NULL)
 		exit (1);
@@ -32,29 +32,44 @@ static void	parents_process(pid_t child)
 	char	buff[20];
 	int		fd;
 	int		ret;
+	int		status;
 
-	delay(1000);
-	fd = open("log", O_RDONLY);
-	while (1)
-	{
-		ret = read(fd, buff, 20);
-		buff[ret] = '\0';
-		if (buff[0] == 'O')
-		{
-			close(fd);
-			softPwmWrite(OutServo, Close);
-			iot_main('I', 'O');
-			fd = open("log", O_WRONLY, O_TRUNC);
-			close(fd);
-		}
-		if (digitalRead(OutRemit) == 1) //answer : 1
-		{
-			close(fd);
-			iot_main('O', 'I');
-			fd = open("log", O_WRONLY, O_TRUNC);
-			close(fd);
-		}
-	}
+	wait(&status);
+	printf("status : %d\n", status);
+	pinMode(InServo, OUTPUT);
+	softPwmCreate(InServo, 0, 200);
+	pinMode(OutServo, OUTPUT);
+	softPwmCreate(OutServo, 0, 200);
+	softPwmWrite(OutServo, Close);
+	delay(200);
+	if (status == 0)
+		iot_main('I', 'O');
+	else
+		iot_main('O', 'I');
+	//while (1)
+	//{
+	//	fd = open("log", O_RDONLY);
+	//	ret = read(fd, buff, 20);
+	//	if (ret > 0)
+	//	{
+	//		printf("success here\n");
+	//		close(fd);
+	//		break ;
+	//		softPwmWrite(OutServo, Close);
+	//		iot_main('I', 'O');
+	//		fd = open("log", O_WRONLY || O_TRUNC);
+	//		close(fd);
+	//	}
+	//	if (digitalRead(OutRemit) == 1) //answer : 1
+	//	{
+	//		close(fd);
+	//		iot_main('O', 'I');
+	//		fd = open("log", O_WRONLY || O_TRUNC);
+	//		close(fd);
+	//	}
+	//	if (ret <= 0 && digitalRead(OutRemit) == 0)
+	//		close(fd);
+	//}
 }
 
 static void	init(void)
@@ -82,10 +97,9 @@ static void	init(void)
 	//clean_room rip sensor
 	pinMode(trig, OUTPUT);
 	pinMode(echo, INPUT);
-	//dust sensor
-	pinMode(Dust, INPUT);
 	//LED
 	pinMode(LED, OUTPUT);
+	delay(200);
 	//bluetooth
 }
 
@@ -99,8 +113,9 @@ int	main(int argc, char *argv[], char *envp[])
 	init();
 	while (1)
 	{
-		softPwmWrite(OutServo, Open);
-		softPwmWrite(InServo, Close);
+		softPwmWrite(InServo, 5);
+		softPwmWrite(OutServo, 5);
+		delay(200);
 		child = fork();
 		if (child < 0)
 		{
@@ -112,5 +127,6 @@ int	main(int argc, char *argv[], char *envp[])
 		else
 			parents_process(child);
 	}
+	wait(NULL);
 	exit (0);
 }
