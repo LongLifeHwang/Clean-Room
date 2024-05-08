@@ -67,7 +67,7 @@ static void	ultrasonic_check(void)
 		//ultrasonic_up(210mm)
 		// if (dis < 10)
 		// 	break ;
-		//ultrasonic_width(75mm)
+		//ultrasonic_width(75mm) 
 		if (dis < 10)
 			count++;
 		else
