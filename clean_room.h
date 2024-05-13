@@ -12,8 +12,10 @@
 # include <wiringPi.h>
 # include <softPwm.h>
 
-# define Close 5
-# define Open 24
+# define CloseOut 5
+# define OpenOut 15
+# define OpenIn 15
+# define CloseIn 1
 
 //https://m.blog.naver.com/kimmy5000/220461603097
 //air blower
@@ -27,7 +29,7 @@
 # define InServo 1
 # define InRemit 22
 
-//exit lock 
+//exit lock
 # define OutServo 23
 # define OutRemit 25
 
