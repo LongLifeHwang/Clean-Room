@@ -40,10 +40,12 @@ static void	parents_process(pid_t child)
 	softPwmCreate(InServo, 0, 200);
 	pinMode(OutServo, OUTPUT);
 	softPwmCreate(OutServo, 0, 200);
-	softPwmWrite(OutServo, Close);
-	delay(200);
 	if (status == 0)
+	{
+		softPwmWrite(OutServo, CloseOut);
+		delay(200);
 		iot_main('I', 'O');
+	}
 	else
 		iot_main('O', 'I');
 	//while (1)
@@ -113,8 +115,8 @@ int	main(int argc, char *argv[], char *envp[])
 	init();
 	while (1)
 	{
-		softPwmWrite(InServo, 5);
-		softPwmWrite(OutServo, 5);
+		softPwmWrite(InServo, CloseIn);
+		softPwmWrite(OutServo, OpenOut);
 		delay(200);
 		child = fork();
 		if (child < 0)
