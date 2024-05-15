@@ -16,26 +16,26 @@ static void	door_move(char flag)
 {
 	if (flag == 'I')
 	{
-		softPwmWrite(InServo, Open);
-		// delay(200);
+		softPwmWrite(InServo, OpenIn);
+		delay(200);
 		//digitalWrite(InServo, 0);
 		while (digitalRead(InRemit) == 0)  //answer : 1
 			delay(100);
 		printf("entrance open\n");
-		// delay(100);
+		delay(100);
 		while (digitalRead(InRemit) == 1) //answer : 0
 			delay(100);
 		delay(100);
 		printf("entrance close\n");
-		softPwmWrite(InServo, Close);
+		softPwmWrite(InServo, CloseIn);
 	}
 	else if (flag == 'O')
 	{
-		softPwmWrite(OutServo, Open);
-		//delay(200);
+		softPwmWrite(OutServo, OpenOut);
+		delay(200);
 		while (digitalRead(OutRemit) == 0) //answer : 1
 			delay(100);
-		//delay(100);
+		delay(100);
 		printf("exit open\n");
 		while (digitalRead(OutRemit) == 1) //answer : 0
 			delay(100);
@@ -67,8 +67,8 @@ static void	ultrasonic_check(void)
 		//ultrasonic_up(210mm)
 		// if (dis < 10)
 		// 	break ;
-		//ultrasonic_width(75mm) 
-		if (dis < 10)
+		//ultrasonic_width(75mm)
+		if (dis < 15)
 			count++;
 		else
 			count = 0;
@@ -88,10 +88,9 @@ void	iot_main(char way_in, char way_out)
 		4.way_out open adn close
 	*/
 	door_move(way_in);
-	printf("here2\n");
 	ultrasonic_check();
 	cleaning(Motor2Left, Motor2Right, 3000);
 	door_move(way_out);
-	cleaning(Motor1Left, Motor1Right, 3000);
-	// dust_check(); 
+	cleaning(Motor1Left, Motor1Right, 6000);
+	// dust_check(); //癒쇱? ?뺤씤
 }
