@@ -2,7 +2,7 @@
 # include <stdio.h>
 # include <sys/wait.h>
 
-# define LED 0
+# define LED 29 
 
 int main(void)
 {
@@ -15,7 +15,7 @@ int main(void)
 	}
     pinMode(LED, OUTPUT);
     flag = 0;
-    while (flag++ < 10)
+    while (flag++ < 30)
     {
         digitalWrite(LED, HIGH);
         delay(1000);
