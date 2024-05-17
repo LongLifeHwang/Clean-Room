@@ -14,6 +14,9 @@ in : cooler(8)
 #include "./clean_room.h"
 #include <wiringPi.h>
 //ai yolo v5
+
+Data	data;
+
 static void	child_process(char *argv[], char *envp[])
 {
 	char	**command;
@@ -27,15 +30,24 @@ static void	child_process(char *argv[], char *envp[])
 	execve("/usr/bin/python3", command, envp);
 }
 
+static void	data_init()
+{
+	data.status = true;
+	data.angle1 = 0.0;
+	data.angle2 = 0.0;
+	data.motor1 = false;
+	data.motor2 = false;
+}
+
 static void	parents_process(pid_t child)
 {
-	char	buff[20];
-	int		fd;
-	int		ret;
-	int		status;
+	int			status;
+	pthread_t	pthread;
 
 	wait(&status);
 	printf("status : %d\n", status);
+	data_init();
+	pthread_create(&pthread, NULL, &thread_function, NULL);
 	pinMode(InServo, OUTPUT);
 	softPwmCreate(InServo, 0, 200);
 	pinMode(OutServo, OUTPUT);
@@ -44,10 +56,11 @@ static void	parents_process(pid_t child)
 	{
 		softPwmWrite(OutServo, CloseOut);
 		delay(200);
-		iot_main('I', 'O');
+		iot_main('I', 'O', data);
 	}
 	else
-		iot_main('O', 'I');
+		iot_main('O', 'I', data);
+	pthread_join(pthread, NULL);
 }
 
 static void	init(void)

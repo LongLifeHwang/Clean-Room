@@ -12,6 +12,7 @@
 //rasberry pi setting
 # include <wiringPi.h>
 # include <softPwm.h>
+# include <gtk/gtk.h>
 
 # define CloseOut 5
 # define OpenOut 15
@@ -51,13 +52,24 @@
 # define BlueTxd 15
 # define BlueRxd 16
 
+typedef struct Data
+{
+    bool    status;
+    bool    motor1;
+    bool    motor2;
+    double  angle1;
+    double  angle2;
+}   Data;
+
 //ft_split.c
 char	**ft_split(char *str, char c);
 //dust_check.c
 void	all_close(void);
 void	exhaust(int flag);
 //iot_main.c
-void	iot_main(char way_in, char way_out);
+void	iot_main(char way_in, char way_out, Data *data);
 void	cleaning(int left, int right, int flag);
+//gui_thread.c
+void	thread_function(void *data);
 
 #endif

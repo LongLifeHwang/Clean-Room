@@ -1,14 +1,20 @@
 #include "../clean_room.h"
 
-void	cleaning(int left, int right, int flag)
+void	cleaning(int left, int right, int flag, Data *data)
 {
 	all_close();
-	digitalWrite(LED, 1);
+	if (left == Motor2Left)
+		data->motor1 = true;
+	else
+		data->motor2 = true;
 	digitalWrite(left, 1);
 	digitalWrite(right, 0);
 	delay(flag);
+	if (left == Motor2Left)
+		data->motor1 = false;
+	else
+		data->motor2 = false;
 	digitalWrite(left, 0);
-	digitalWrite(LED, 0);
 }
 
 //https://blog.naver.com/simjk98/222149165719
@@ -78,7 +84,7 @@ static void	ultrasonic_check(void)
 	}
 }
 
-void	iot_main(char way_in, char way_out)
+void	iot_main(char way_in, char way_out, Data *data)
 {
 	/*
 	logic
@@ -89,8 +95,8 @@ void	iot_main(char way_in, char way_out)
 	*/
 	door_move(way_in);
 	ultrasonic_check();
-	cleaning(Motor2Left, Motor2Right, 3000);
+	cleaning(Motor2Left, Motor2Right, 6000, data);
 	door_move(way_out);
-	cleaning(Motor1Left, Motor1Right, 6000);
+	cleaning(Motor1Left, Motor1Right, 6000, data);
 	// dust_check(); //癒쇱? ?뺤씤
 }
