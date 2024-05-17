@@ -7,6 +7,7 @@
 # include <stdlib.h>
 # include <sys/wait.h>
 # include <signal.h>
+# include <pthread.h>
 
 //rasberry pi setting
 # include <wiringPi.h>

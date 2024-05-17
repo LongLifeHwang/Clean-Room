@@ -48,30 +48,6 @@ static void	parents_process(pid_t child)
 	}
 	else
 		iot_main('O', 'I');
-	//while (1)
-	//{
-	//	fd = open("log", O_RDONLY);
-	//	ret = read(fd, buff, 20);
-	//	if (ret > 0)
-	//	{
-	//		printf("success here\n");
-	//		close(fd);
-	//		break ;
-	//		softPwmWrite(OutServo, Close);
-	//		iot_main('I', 'O');
-	//		fd = open("log", O_WRONLY || O_TRUNC);
-	//		close(fd);
-	//	}
-	//	if (digitalRead(OutRemit) == 1) //answer : 1
-	//	{
-	//		close(fd);
-	//		iot_main('O', 'I');
-	//		fd = open("log", O_WRONLY || O_TRUNC);
-	//		close(fd);
-	//	}
-	//	if (ret <= 0 && digitalRead(OutRemit) == 0)
-	//		close(fd);
-	//}
 }
 
 static void	init(void)

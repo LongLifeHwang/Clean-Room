@@ -2,6 +2,7 @@ CC = gcc
 FLAG = -Wall -Wextra -Werror
 NAME = clean_room
 SOURCE = ./main.c \
+		./gui_thread.c \
 		./iot/dust_check.c \
 		./iot/iot_main.c \
 		./utils/ft_split.c 
