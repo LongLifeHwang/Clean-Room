@@ -27,7 +27,7 @@
 # define InServo 1
 # define InRemit 22
 
-//exit lock
+//exit lock 
 # define OutServo 23
 # define OutRemit 25
 
