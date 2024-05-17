@@ -56,10 +56,11 @@ static void	parents_process(pid_t child)
 	{
 		softPwmWrite(OutServo, CloseOut);
 		delay(200);
-		iot_main('I', 'O', data);
+		iot_main('I', 'O');
 	}
 	else
-		iot_main('O', 'I', data);
+		iot_main('O', 'I');
+	data.status = false;
 	pthread_join(pthread, NULL);
 }
 

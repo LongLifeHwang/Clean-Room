@@ -61,6 +61,7 @@ gboolean time_handler(GtkWidget *widget)
     }
     if (data.motor1 || data.motor2)
         gtk_widget_queue_draw(widget);
+    usleep(100);
     return TRUE;
 }
 
