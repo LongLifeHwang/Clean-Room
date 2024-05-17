@@ -8,7 +8,7 @@ SOURCE = ./main.c \
 INC = ./clean_room.h
 all : $(NAME)
 
-$(NAME): $(SOURCE)
+$(NAME): $(SOURCE) $(INC)
 	$(CC) -o $(NAME) $(SOURCE) -lwiringPi
 
 .PHONY : clean re all
