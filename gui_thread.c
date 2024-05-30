@@ -36,7 +36,6 @@ static gboolean on_draw_event(GtkWidget *widget, cairo_t *cr, gpointer user_data
     draw_motor(cr, 0);
     cairo_restore(cr);
     draw_text(cr, width / 4, height / 2, "clean");
-    // Draw the second motor on the right
     cairo_save(cr);
     cairo_translate(cr, 3 * width / 4, height / 2);
     cairo_rotate(cr, angle2);
