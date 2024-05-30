@@ -15,8 +15,6 @@ in : cooler(8)
 #include <wiringPi.h>
 //ai yolo v5
 
-Data	data;
-
 static void	child_process(char *argv[], char *envp[])
 {
 	char	**command;
@@ -30,24 +28,36 @@ static void	child_process(char *argv[], char *envp[])
 	execve("/usr/bin/python3", command, envp);
 }
 
-static void	data_init()
+static void	data_init(Data *data)
 {
-	data.status = true;
-	data.angle1 = 0.0;
-	data.angle2 = 0.0;
-	data.motor1 = false;
-	data.motor2 = false;
+	data->status = true;
+	data->angle1 = 0.0;
+	data->angle2 = 0.0;
+	data->motor1 = false;
+	data->motor2 = false;
 }
 
-static void	parents_process(pid_t child)
+static void	parents_process(pid_t child, Data *data)
 {
+	static int	flag = 0;
 	int			status;
 	pthread_t	pthread;
 
 	wait(&status);
+	if (flag == 0)
+	{
+		data = malloc(sizeof(Data));
+		if (data == 0)
+			exit(1);
+		gtk_init(NULL, NULL);
+		data->window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+		data->darea = gtk_drawing_area_new();
+		gtk_container_add(GTK_CONTAINER(window), darea);
+		flag = 1;
+	}
 	printf("status : %d\n", status);
-	data_init();
-	pthread_create(&pthread, NULL, &thread_function, NULL);
+	data_init(data);
+	pthread_create(&pthread, NULL, &thread_function, data);
 	pinMode(InServo, OUTPUT);
 	softPwmCreate(InServo, 0, 200);
 	pinMode(OutServo, OUTPUT);
@@ -60,7 +70,7 @@ static void	parents_process(pid_t child)
 	}
 	else
 		iot_main('O', 'I');
-	data.status = false;
+	data->status = false;
 	pthread_join(pthread, NULL);
 }
 
@@ -97,11 +107,11 @@ static void	init(void)
 
 int	main(int argc, char *argv[], char *envp[])
 {
+	Data	*data;
 	pid_t	child;
 
 	if (argc != 2)
 		exit(0);
-	// delay(10000);  //starting roading
 	init();
 	while (1)
 	{
@@ -117,8 +127,10 @@ int	main(int argc, char *argv[], char *envp[])
 		else if (child == 0)
 			child_process(argv, envp);
 		else
-			parents_process(child);
+			parents_process(child, data);
 	}
 	wait(NULL);
+	if (data != 0)
+		free(data);
 	exit (0);
 }
