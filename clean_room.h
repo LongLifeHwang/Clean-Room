@@ -54,11 +54,13 @@
 
 typedef struct Data
 {
-    bool    status;
-    bool    motor1;
-    bool    motor2;
-    double  angle1;
-    double  angle2;
+    GtkWidget   *window;
+    GtkWidget   *darea;
+    bool        status;
+    bool        motor1;
+    bool        motor2;
+    double      angle1;
+    double      angle2;
 }   Data;
 
 //ft_split.c
