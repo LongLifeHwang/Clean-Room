@@ -1,16 +1,3 @@
-//install
-/*
-sudo apt-get install wringpi
-compile : -lwiringpi
-*/
-
-//sensor position
-/*
-front : camera(yolo v5)
-back : ultrasonic wave
-in : cooler(8)
-*/
-
 #include "./clean_room.h"
 #include <wiringPi.h>
 //ai yolo v5
