@@ -10,7 +10,7 @@ INC = ./clean_room.h
 all : $(NAME)
 
 $(NAME): $(SOURCE) $(INC)
-	$(CC) -o $(NAME) $(SOURCE) `pkg-config --cflags --libs gtk+-3.0` -lwiringPi
+	$(CC) -o $(NAME) $(SOURCE) 'pkg-config --cflags --libs gtk+-3.0' -lwiringPi
 
 .PHONY : clean re all
 
