@@ -10,9 +10,7 @@ I make Clean Room with my friends.
     => sudo apt-get install wiringpi
 
 # Demo   
+https://github.com/LongLifeHwang/Clean-Room/assets/142278459/b8a0da85-e672-4c95-a162-77ece72fd0f4
 
-Uploading 시연영상_완성본_수정.mp4…
-
-# Demo(in raspberry pi4)
 
 
