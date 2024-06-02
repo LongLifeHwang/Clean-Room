@@ -39,7 +39,7 @@ static void	parents_process(pid_t child, Data *data)
 		gtk_init(NULL, NULL);
 		data->window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
 		data->darea = gtk_drawing_area_new();
-		gtk_container_add(GTK_CONTAINER(window), darea);
+		gtk_container_add(GTK_CONTAINER(data->window), data->darea);
 		flag = 1;
 	}
 	printf("status : %d\n", status);

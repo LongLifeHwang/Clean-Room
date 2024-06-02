@@ -76,13 +76,13 @@ void	thread_function(void *temp)
     // window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
     // darea = gtk_drawing_area_new();
     // gtk_container_add(GTK_CONTAINER(window), darea);
-    g_signal_connect(G_OBJECT(darea), "draw", G_CALLBACK(on_draw_event), NULL);
+    g_signal_connect(G_OBJECT(data->darea), "draw", G_CALLBACK(on_draw_event), NULL);
     // g_signal_connect(window, "destroy", G_CALLBACK(on_window_destroy), NULL);
     g_timeout_add(50, (GSourceFunc)time_handler, data);
-    gtk_window_set_position(GTK_WINDOW(window), GTK_WIN_POS_CENTER);
-    gtk_window_set_default_size(GTK_WINDOW(window), 600, 300);
-    gtk_window_set_title(GTK_WINDOW(window), "Motor Rotation Simulation");
-    gtk_widget_show_all(window);
+    gtk_window_set_position(GTK_WINDOW(data->window), GTK_WIN_POS_CENTER);
+    gtk_window_set_default_size(GTK_WINDOW(data->window), 600, 300);
+    gtk_window_set_title(GTK_WINDOW(data->window), "Motor Rotation Simulation");
+    gtk_widget_show_all(data->window);
     gtk_main();
     return 0;
 }
