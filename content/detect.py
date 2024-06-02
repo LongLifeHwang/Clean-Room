@@ -64,6 +64,10 @@ from utils.general import (
     xyxy2xywh,
 )
 from utils.torch_utils import select_device, smart_inference_mode
+import RPi.GPIO as GPIO
+
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(26, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
 
 flag = 0
 
@@ -263,12 +267,13 @@ def run(
                     J = 1
         if (H == 1 and J == 1):
             flag += 1
-        # else:
-        #     flag = 0
-        flag += 1
+        else:
+            flag = 0
         if (flag > 5):
             cv2.destroyAllWindows()
-            sys.exit()
+            sys.exit(0)
+        if (GPIO.input(26)):
+            sys.exit(1)
         # Print time (inference-only)
         # LOGGER.info(f"{s}{'' if len(det) else '(no detections), '}{dt[1].dt * 1E3:.1f}ms")
 
